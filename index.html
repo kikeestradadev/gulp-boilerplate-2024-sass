@@ -16,64 +16,86 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/prism.css?t=1784226547217">
-    <link rel="stylesheet" href="styles.css?t=1784226547217">
+    <link rel="stylesheet" href="./assets/prism.css?t=1784230882599">
+    <link rel="stylesheet" href="styles.css?t=1784230882599">
     <title>Home | Layouts</title>
   </head>
   <body class="home" itemscope itemtype="http://schema.org/WebPage">
     <header class="main-header">
     </header>
     <main class="main-container">
-      <section>
-        <div>
-          <h2>Tabla de colores:</h2>
-          <div>
-            <article>
-              <div style="background-color: #007BDF"></div>
-              <div>
-                <h3>Principal</h3>
-                <p>#007BDF</p>
-                <p>CSS name: <code>--first-color</code></p>
+      <section class="color-table">
+        <div class="color-table__container">
+          <h2 class="color-table__title">Paleta de colores </h2>
+          <div class="color-table__grid">
+            <article class="color-table__card">
+              <div class="color-table__swatch" style="background-color: var(--color-yellow)"></div>
+              <div class="color-table__body">
+                <h3 class="color-table__name">Amarillo</h3>
+                <p class="color-table__hex">var(--color-yellow)</p>
               </div>
             </article>
-            <article>
-              <div style="background-color: #006DC6"></div>
-              <div>
-                <h3>Principal Alt</h3>
-                <p>#006DC6</p>
-                <p>CSS name: <code>--first-color-alt</code></p>
+            <article class="color-table__card">
+              <div class="color-table__swatch" style="background-color: var(--color-orange)"></div>
+              <div class="color-table__body">
+                <h3 class="color-table__name">Naranja claro</h3>
+                <p class="color-table__hex">var(--color-orange)</p>
               </div>
             </article>
-            <article>
-              <div style="background-color: #00CBFF"></div>
-              <div>
-                <h3>Secundario</h3>
-                <p>#00CBFF</p>
-                <p>CSS name: <code>--second-color</code></p>
+            <article class="color-table__card">
+              <div class="color-table__swatch" style="background-color: var(--color-orange-light)"></div>
+              <div class="color-table__body">
+                <h3 class="color-table__name">Naranja</h3>
+                <p class="color-table__hex">var(--color-orange-light)</p>
               </div>
             </article>
-            <article>
-              <div style="background-color: #00BFF0"></div>
-              <div>
-                <h3>Secundario Alt</h3>
-                <p>#00BFF0</p>
-                <p>CSS name: <code>--second-color-alt</code></p>
+            <article class="color-table__card">
+              <div class="color-table__swatch" style="background-color: var(--color-magenta)"></div>
+              <div class="color-table__body">
+                <h3 class="color-table__name">Magenta</h3>
+                <p class="color-table__hex">var(--color-magenta)</p>
               </div>
             </article>
-            <article>
-              <div style="background-color: #FF3C32"></div>
-              <div>
-                <h3>Terciario</h3>
-                <p>#FF3C32</p>
-                <p>CSS name: <code>--third-color</code></p>
+            <article class="color-table__card">
+              <div class="color-table__swatch" style="background-color: var(--color-green)"></div>
+              <div class="color-table__body">
+                <h3 class="color-table__name">Verde</h3>
+                <p class="color-table__hex">var(--color-green)</p>
               </div>
             </article>
-            <article>
-              <div style="background-color: #FF2419"></div>
-              <div>
-                <h3>Terciario Alt</h3>
-                <p>#FF2419</p>
-                <p>CSS name: <code>--third-color-alt</code></p>
+            <article class="color-table__card">
+              <div class="color-table__swatch" style="background-color: var(--color-green-dark)"></div>
+              <div class="color-table__body">
+                <h3 class="color-table__name">Verde oscuro</h3>
+                <p class="color-table__hex">var(--color-green-dark)</p>
+              </div>
+            </article>
+            <article class="color-table__card">
+              <div class="color-table__swatch" style="background-color: var(--color-green-deep)"></div>
+              <div class="color-table__body">
+                <h3 class="color-table__name">Verde profundo</h3>
+                <p class="color-table__hex">var(--color-green-deep)</p>
+              </div>
+            </article>
+            <article class="color-table__card">
+              <div class="color-table__swatch" style="background-color: var(--color-blue)"></div>
+              <div class="color-table__body">
+                <h3 class="color-table__name">Azul</h3>
+                <p class="color-table__hex">var(--color-blue)</p>
+              </div>
+            </article>
+            <article class="color-table__card">
+              <div class="color-table__swatch" style="background-color: var(--color-purple)"></div>
+              <div class="color-table__body">
+                <h3 class="color-table__name">Morado</h3>
+                <p class="color-table__hex">var(--color-purple)</p>
+              </div>
+            </article>
+            <article class="color-table__card">
+              <div class="color-table__swatch" style="background-color: var(--color-fuchsia)"></div>
+              <div class="color-table__body">
+                <h3 class="color-table__name">Fucsia</h3>
+                <p class="color-table__hex">var(--color-fuchsia)</p>
               </div>
             </article>
           </div>
@@ -105,231 +127,6 @@
             incidunt obcaecati sequi labore hic? Soluta doloremque vitae explicabo
             assumenda fugit tenetur.
           </p>
-        </div>
-      </section>
-      <section>
-        <div>
-          <pre class="language-css" contenteditable="true" spellcheck="false">
-            <style contenteditable spellcheck="false" style="display: block; min-height: 100px;">.editor-css {
-	background-color: #000; 
-	color: aqua; 
-	font-size: 2rem; 
-}
-            </style></pre>
-          <div class="editor-css">
-            <h1>editor-css</h1>
-          </div>
-        </div>
-      </section>
-      <style>
-        e[contenteditable="true"] {
-        	outline: none;
-        	border-radius: 8px;
-        	border: 2px solid #5cf;
-        	background: #111;
-        	min-height: 120px;
-        	font-size: 1.1em;
-        	font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
-        	margin: 20px 0;
-        	padding: 16px;
-        	transition: box-shadow 0.2s;
-        }
-        pre[contenteditable="true"]:focus {
-        	box-shadow: 0 0 0 2px #09f;
-        }
-      </style>
-      <script>
-        document.querySelectorAll('pre[contenteditable="true"] code').forEach(block => {
-        	block.addEventListener('input', () => {
-        		Prism.highlightElement(block);
-        	});
-        });
-      </script>
-      <section>
-        <div>
-          <h1>Flex</h1>
-          <div>
-            <div>
-              <div><span><b>Core Module1</b></span></div>
-            </div>
-            <div>
-              <div><span><b>Core Module2</b></span></div>
-            </div>
-            <div>
-              <div><span><b>Core Module3</b></span></div>
-            </div>
-            <div>
-              <div><span><b>Core Module4</b></span></div>
-            </div>
-            <div>
-              <div><span><b>Core Module5</b></span></div>
-            </div>
-            <div>
-              <div><span><b>Core Module6</b></span></div>
-            </div>
-            <div>
-              <div><span><b>Core Module7</b></span></div>
-            </div>
-            <div>
-              <div><span><b>Core Module8</b></span></div>
-            </div>
-            <div>
-              <div><span><b>Core Module9</b></span></div>
-            </div>
-            <div>
-              <div><span><b>Core Module10</b></span></div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section>
-        <div>
-          <h2>grid</h2>
-          <div>
-            <div><span><b>Internal Module1</b></span></div>
-            <div><span><b>Internal Module2</b></span></div>
-            <div><span><b>Internal Module3</b></span></div>
-            <div><span><b>Internal Module4</b></span></div>
-            <div><span><b>Internal Module5</b></span></div>
-            <div><span><b>Internal Module6</b></span></div>
-            <div><span><b>Internal Module7</b></span></div>
-            <div><span><b>Internal Module8</b></span></div>
-            <div><span><b>Internal Module9</b></span></div>
-            <div><span><b>Internal Module10</b></span></div>
-          </div>
-        </div>
-      </section>
-      <section>
-        <div>
-                <div><img src="assets/img4.jpg" style="width:100px">
-                  <p>slider_item_1</p>
-                </div>
-                <div><img src="assets/img2.jpg" style="width:100px">
-                  <p>slider_item_2</p>
-                </div>
-                <div><img src="assets/img3.jpg" style="width:100px">
-                  <p>slider_item_3</p>
-                </div>
-                <div><img src="assets/img4.jpg" style="width:100px">
-                  <p>slider_item_4</p>
-                </div>
-                <div><img src="assets/img4.jpg" style="width:100px">
-                  <p>example2 - item 1</p>
-                  <p>cat1</p>
-                  <p>cat2</p>
-                </div>
-                <div><img src="assets/img2.jpg" style="width:100px">
-                  <p>example2 - item 2</p>
-                  <p>cat1</p>
-                  <p>cat2</p>
-                </div>
-                <div><img src="assets/img3.jpg" style="width:100px">
-                  <p>example2 - item 3</p>
-                  <p>cat1</p>
-                  <p>cat2</p>
-                </div>
-                <div><img src="assets/img4.jpg" style="width:100px">
-                  <p>example2 - item 4</p>
-                  <p>cat1</p>
-                  <p>cat2</p>
-                </div>
-        </div>
-      </section>
-      <section>
-        <div>
-          <ul>
-            <li>lorem1</li>
-            <li>lorem2</li>
-            <li>lorem3</li>
-            <li>lorem4</li>
-            <li>lorem5</li>
-          </ul>
-          <ol>
-            <li>lorem1</li>
-            <li>lorem2</li>
-            <li>lorem3</li>
-            <li>lorem4</li>
-            <li>lorem5</li>
-          </ol>
-        </div>
-      </section>
-      <section>
-        <div>
-          <h1>Write Markdown in the html file</h1><ul>
-<li>Lorem ipsum dolor sit amet consectetur adipisicing <code>elit</code>.</li>
-<li>Lorem ipsum dolor sit amet consectetur adipisicing <code>elit</code>.</li>
-<li>Lorem ipsum dolor sit amet consectetur adipisicing <code>elit</code>.</li>
-<li>Lorem ipsum dolor sit amet consectetur adipisicing <code>elit</code>.</li>
-</ul>
-
-          <h1>Write Markdown in the html file (html)</h1><pre><code class="language-html">	&lt;!DOCTYPE html&gt;
-	&lt;html lang=&quot;en&quot;&gt;
-	&lt;head&gt;
-		&lt;title&gt;Pug&lt;/title&gt;
-		&lt;script type=&quot;text/javascript&quot;&gt;
-			foo = true;
-			bar = function () {};
-			if (foo) { bar(1 + 5) }
-		&lt;/script&gt;
-	&lt;/head&gt;
-	&lt;body&gt;
-		&lt;h1&gt;Pug - node template engine&lt;/h1&gt;
-		&lt;div id=&quot;container&quot; class=&quot;col&quot;&gt;
-		&lt;p&gt;You are amazing&lt;/p&gt;
-		&lt;p&gt; Lorem ipsum.&lt;/p&gt;
-		&lt;/div&gt;
-	&lt;/body&gt;
-	&lt;/html&gt;
-</code></pre>
-
-          <h1>Importing Markdown files in the html</h1><h1>This is a Markdown Example</h1>
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-<pre><code class="language-html">&lt;a class=&quot;button&quot;&gt;.button.first-color&lt;/a&gt;
-&lt;a class=&quot;button second-color&quot;&gt;.button.second-color&lt;/a&gt;
-&lt;a class=&quot;button third-color&quot;&gt;.button.third-color&lt;/a&gt;
-&lt;a class=&quot;button accent-color&quot;&gt;.button.accent-color&lt;/a&gt;
-&lt;a class=&quot;button dark-color&quot;&gt;.button.dark-color&lt;/a&gt;
-&lt;a class=&quot;button text-color&quot;&gt;.button.text-color&lt;/a&gt;
-&lt;a class=&quot;button light-color&quot;&gt;.button.light-color&lt;/a&gt;
-</code></pre>
-<pre><code class="language-javascript">alert('Hola Mundo');
-</code></pre>
-<pre><code class="language-css">body {
-	background: red;
-}
-</code></pre>
-
-        </div>
-      </section>
-      <section>
-        <div>
-          <h2>side bar</h2>
-          <div>
-            <div>first Div</div>
-            <div>Second Div</div>
-          </div>
-        </div>
-      </section>
-      <section>
-        <div>
-          <svg width="28" height="28">
-            <use xlink:href="./assets/sprite.svg#twitch"></use>
-          </svg>
-          <svg width="28" height="28">
-            <use xlink:href="./assets/sprite.svg#github"></use>
-          </svg>
-          <svg width="28" height="28">
-            <use xlink:href="./assets/sprite.svg#instagram"></use>
-          </svg>
-          <svg width="28" height="28">
-            <use xlink:href="./assets/sprite.svg#youtube"></use>
-          </svg>
-          <svg width="28" height="28">
-            <use xlink:href="./assets/sprite.svg#x"> </use>
-          </svg>
-          <svg width="28" height="28">
-            <use xlink:href="./assets/sprite.svg#linkedin"></use>
-          </svg>
         </div>
       </section>
       <section>
@@ -398,10 +195,86 @@
           assumenda fugit tenetur.
         </div>
       </section>
+      <section>
+        <div>
+                <div><img src="assets/img4.jpg" style="width:100px">
+                  <p>slider_item_1</p>
+                </div>
+                <div><img src="assets/img2.jpg" style="width:100px">
+                  <p>slider_item_2</p>
+                </div>
+                <div><img src="assets/img3.jpg" style="width:100px">
+                  <p>slider_item_3</p>
+                </div>
+                <div><img src="assets/img4.jpg" style="width:100px">
+                  <p>slider_item_4</p>
+                </div>
+                <div><img src="assets/img4.jpg" style="width:100px">
+                  <p>example2 - item 1</p>
+                  <p>cat1</p>
+                  <p>cat2</p>
+                </div>
+                <div><img src="assets/img2.jpg" style="width:100px">
+                  <p>example2 - item 2</p>
+                  <p>cat1</p>
+                  <p>cat2</p>
+                </div>
+                <div><img src="assets/img3.jpg" style="width:100px">
+                  <p>example2 - item 3</p>
+                  <p>cat1</p>
+                  <p>cat2</p>
+                </div>
+                <div><img src="assets/img4.jpg" style="width:100px">
+                  <p>example2 - item 4</p>
+                  <p>cat1</p>
+                  <p>cat2</p>
+                </div>
+        </div>
+      </section>
+      <section>
+        <div>
+          <ul>
+            <li>lorem1</li>
+            <li>lorem2</li>
+            <li>lorem3</li>
+            <li>lorem4</li>
+            <li>lorem5</li>
+          </ul>
+          <ol>
+            <li>lorem1</li>
+            <li>lorem2</li>
+            <li>lorem3</li>
+            <li>lorem4</li>
+            <li>lorem5</li>
+          </ol>
+        </div>
+      </section>
+      <section>
+        <div>
+          <svg width="28" height="28">
+            <use xlink:href="./assets/sprite.svg#twitch"></use>
+          </svg>
+          <svg width="28" height="28">
+            <use xlink:href="./assets/sprite.svg#github"></use>
+          </svg>
+          <svg width="28" height="28">
+            <use xlink:href="./assets/sprite.svg#instagram"></use>
+          </svg>
+          <svg width="28" height="28">
+            <use xlink:href="./assets/sprite.svg#youtube"></use>
+          </svg>
+          <svg width="28" height="28">
+            <use xlink:href="./assets/sprite.svg#x"> </use>
+          </svg>
+          <svg width="28" height="28">
+            <use xlink:href="./assets/sprite.svg#linkedin"></use>
+          </svg>
+        </div>
+      </section>
     </main>
     <footer class="main-footer">
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="index.js?t=1784226547217"></script>
+    <script src="index.js?t=1784230882599"></script>
   </body>
 </html>
