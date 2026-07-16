@@ -1,10 +1,10 @@
 {
-  "name": "gulp-boilerplate-2024",
+  "name": "gulp-boilerplate-2024-sass",
   "version": "1.0.0",
   "description": "Simple scafolding for statics web projects",
   "type": "module",
   "main": "gulpfile.babel.js",
-  "homepage": "https://kikeestrada.github.io/gulp-boilerplate-2024/",
+  "homepage": "https://kikeestradadev.github.io/gulp-boilerplate-2024-sass/",
   "scripts": {
     "dev": "npm run gulp",
     "build": "gulp build",
