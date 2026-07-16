@@ -1,16 +1,14 @@
 ---
-description: Convencion de modulos JavaScript con constante, export default e importacion central en index.js
-globs: "src/js/**/*.js"
+description: Patron estandar de modulos JS (const + arrow + export default) e import en index.js
+globs: src/js/**/*.js
 alwaysApply: false
 ---
 
 # Modulos JavaScript
 
-Cada funcionalidad propia debe vivir en un archivo dentro de `src/js/modules/`.
+La forma estandar de JS en este proyecto es la de `src/js/modules/internalModule.js`: una funcion en `const`, `export default`, e importada/ejecutada desde `src/js/index.js`.
 
 ## Modulo
-
-Declara una constante con `const`, asigna una funcion flecha y exportala con `export default`.
 
 ```js
 const internalModule = () => {
@@ -20,9 +18,7 @@ const internalModule = () => {
 export default internalModule;
 ```
 
-## Entrada principal
-
-Importa cada modulo en `src/js/index.js` y ejecutalo dentro de la funcion autoejecutable.
+## Entrada principal (`src/js/index.js`)
 
 ```js
 import internalModule from './modules/internalModule';
@@ -34,9 +30,9 @@ import internalModule from './modules/internalModule';
 
 ## Reglas
 
-1. Usa un archivo por modulo dentro de `src/js/modules/`.
-2. El nombre de la constante debe describir el modulo y usar `camelCase`.
-3. Usa funciones flecha asignadas a `const`; no declares funciones globales.
-4. Cada modulo propio debe tener un unico `export default`.
-5. Importa e inicializa los modulos desde `src/js/index.js`.
-6. No escribas la implementacion de un modulo directamente en `index.js`.
+1. Cada funcionalidad propia vive en `src/js/modules/` (un archivo por modulo).
+2. Nombre del archivo y de la constante en `camelCase` (ej. `internalModule.js` / `internalModule`).
+3. Declara el modulo con `const` + funcion flecha; un unico `export default`.
+4. Importa y ejecuta el modulo desde `src/js/index.js` dentro de la IIFE.
+5. No implementes la logica del modulo directamente en `index.js`.
+6. No uses `function` global, `module.exports` ni exports nombrados para modulos propios.

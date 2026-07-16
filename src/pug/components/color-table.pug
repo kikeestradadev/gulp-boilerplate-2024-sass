@@ -8,16 +8,16 @@
 		{ name: 'Terciario Alt', hex: '#FF2419', css: '--third-color-alt' },
 	]
 
-section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px] py-10")
-	div(class="w-full max-w-[var(--container)] mx-auto")
-		h2(class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold mb-6") Tabla de colores:
-		div(class="grid grid-cols-1 sm:grid-cols-2 m:grid-cols-3 l:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5")
+section
+	div
+		h2 Tabla de colores:
+		div
 			each color in colors
-				article(class="overflow-hidden rounded-lg shadow-md bg-white")
-					div(class="h-24" style=`background-color: ${color.hex}`)
-					div(class="p-4 text-center space-y-2")
-						h3(class="font-bold text-base")= color.name
-						p(class="text-gray-500 text-sm")= color.hex
-						p(class="text-xs text-gray-600")
+				article
+					div(style=`background-color: ${color.hex}`)
+					div
+						h3= color.name
+						p= color.hex
+						p
 							| CSS name: 
-							code(class="text-red-600 bg-red-50 px-1 rounded font-mono")= color.css
+							code= color.css

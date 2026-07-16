@@ -13,10 +13,13 @@ import data from 'gulp-data';
 import fs from 'fs';
 import path from 'path';
 import cacheBust from 'gulp-cache-bust';
-import tailwindcss from '@tailwindcss/postcss';
 import autoprefixer from 'autoprefixer';
 import copy from 'gulp-copy';
 import htmlmin from 'gulp-htmlmin';
+import gulpSass from 'gulp-sass';
+import * as dartSass from 'sass';
+
+const sass = gulpSass(dartSass);
 
 // Función para leer todos los archivos JSON en un directorio
 const getJsonData = () => {
@@ -61,9 +64,9 @@ gulp.task('pug', () => {
 		.pipe(gulp.dest('public'));
 });
 
-// Tarea Tailwind CSS 4
-gulp.task('tailwind', () => {
-	return gulp.src('src/scss/tailwind.css')
+// Tarea SASS
+gulp.task('styles', () => {
+	return gulp.src('src/scss/styles.scss')
 		.pipe(plumber({
 			errorHandler: function(err) {
 				console.log(err.message);
@@ -71,8 +74,8 @@ gulp.task('tailwind', () => {
 			}
 		}))
 		.pipe(sourcemaps.init())
+		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([
-			tailwindcss,
 			autoprefixer()
 		]))
 		.pipe(sourcemaps.write('.'))
@@ -106,7 +109,7 @@ gulp.task('assets', () => {
 
 gulp.task(
 	'serve',
-	gulp.series('pug', 'tailwind', 'scripts', 'assets', () => {
+	gulp.series('pug', 'styles', 'scripts', 'assets', () => {
 		browserSync.init({
 			server: {
 				baseDir: 'public',
@@ -118,12 +121,12 @@ gulp.task(
 		});
 
 		gulp.watch('src/pug/**/*.pug', (done) => {
-			gulp.series('pug', 'tailwind')();
+			gulp.series('pug', 'styles')();
 			browserSync.reload();
 			done();
 		});
 
-		gulp.watch(['src/scss/tailwind.css', 'tailwind.config.js'], gulp.series('tailwind'));
+		gulp.watch('src/scss/**/*.scss', gulp.series('styles'));
 
 		gulp.watch('src/js/**/*.js', (done) => {
 			gulp.series('scripts')();
@@ -132,7 +135,7 @@ gulp.task(
 		});
 
 		gulp.watch(['src/data/**/*.json', 'src/md/**/*.md'], (done) => {
-			gulp.series('pug', 'tailwind')();
+			gulp.series('pug', 'styles')();
 			browserSync.reload();
 			done();
 		});
@@ -146,5 +149,5 @@ gulp.task(
 );
 
 gulp.task('dev', gulp.series('serve'));
-gulp.task('build', gulp.series('pug', 'tailwind', 'scripts', 'assets'));
+gulp.task('build', gulp.series('pug', 'styles', 'scripts', 'assets'));
 gulp.task('default', gulp.series('dev'));

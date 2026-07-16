@@ -16,90 +16,90 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/prism.css?t=1784220221602">
-    <link rel="stylesheet" href="tailwind.css?t=1784220221602">
+    <link rel="stylesheet" href="./assets/prism.css?t=1784225624584">
+    <link rel="stylesheet" href="styles.css?t=1784225624584">
     <title>Home | Layouts</title>
   </head>
-  <body class="home bg-[var(--bg-body)] flex flex-col min-h-screen pt-[var(--header-height)]" itemscope itemtype="http://schema.org/WebPage">
-    <header class="fixed top-0 left-0 z-10 w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--header-height)]">
+  <body class="home" itemscope itemtype="http://schema.org/WebPage">
+    <header class="main-header">
     </header>
-    <main class="flex-1">
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] py-10">
-        <div class="w-full max-w-[var(--container)] mx-auto">
-          <h2 class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold mb-6">Tabla de colores:</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 m:grid-cols-3 l:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
-            <article class="overflow-hidden rounded-lg shadow-md bg-white">
-              <div class="h-24" style="background-color: #007BDF"></div>
-              <div class="p-4 text-center space-y-2">
-                <h3 class="font-bold text-base">Principal</h3>
-                <p class="text-gray-500 text-sm">#007BDF</p>
-                <p class="text-xs text-gray-600">CSS name: <code class="text-red-600 bg-red-50 px-1 rounded font-mono">--first-color</code></p>
+    <main class="main-container">
+      <section>
+        <div>
+          <h2>Tabla de colores:</h2>
+          <div>
+            <article>
+              <div style="background-color: #007BDF"></div>
+              <div>
+                <h3>Principal</h3>
+                <p>#007BDF</p>
+                <p>CSS name: <code>--first-color</code></p>
               </div>
             </article>
-            <article class="overflow-hidden rounded-lg shadow-md bg-white">
-              <div class="h-24" style="background-color: #006DC6"></div>
-              <div class="p-4 text-center space-y-2">
-                <h3 class="font-bold text-base">Principal Alt</h3>
-                <p class="text-gray-500 text-sm">#006DC6</p>
-                <p class="text-xs text-gray-600">CSS name: <code class="text-red-600 bg-red-50 px-1 rounded font-mono">--first-color-alt</code></p>
+            <article>
+              <div style="background-color: #006DC6"></div>
+              <div>
+                <h3>Principal Alt</h3>
+                <p>#006DC6</p>
+                <p>CSS name: <code>--first-color-alt</code></p>
               </div>
             </article>
-            <article class="overflow-hidden rounded-lg shadow-md bg-white">
-              <div class="h-24" style="background-color: #00CBFF"></div>
-              <div class="p-4 text-center space-y-2">
-                <h3 class="font-bold text-base">Secundario</h3>
-                <p class="text-gray-500 text-sm">#00CBFF</p>
-                <p class="text-xs text-gray-600">CSS name: <code class="text-red-600 bg-red-50 px-1 rounded font-mono">--second-color</code></p>
+            <article>
+              <div style="background-color: #00CBFF"></div>
+              <div>
+                <h3>Secundario</h3>
+                <p>#00CBFF</p>
+                <p>CSS name: <code>--second-color</code></p>
               </div>
             </article>
-            <article class="overflow-hidden rounded-lg shadow-md bg-white">
-              <div class="h-24" style="background-color: #00BFF0"></div>
-              <div class="p-4 text-center space-y-2">
-                <h3 class="font-bold text-base">Secundario Alt</h3>
-                <p class="text-gray-500 text-sm">#00BFF0</p>
-                <p class="text-xs text-gray-600">CSS name: <code class="text-red-600 bg-red-50 px-1 rounded font-mono">--second-color-alt</code></p>
+            <article>
+              <div style="background-color: #00BFF0"></div>
+              <div>
+                <h3>Secundario Alt</h3>
+                <p>#00BFF0</p>
+                <p>CSS name: <code>--second-color-alt</code></p>
               </div>
             </article>
-            <article class="overflow-hidden rounded-lg shadow-md bg-white">
-              <div class="h-24" style="background-color: #FF3C32"></div>
-              <div class="p-4 text-center space-y-2">
-                <h3 class="font-bold text-base">Terciario</h3>
-                <p class="text-gray-500 text-sm">#FF3C32</p>
-                <p class="text-xs text-gray-600">CSS name: <code class="text-red-600 bg-red-50 px-1 rounded font-mono">--third-color</code></p>
+            <article>
+              <div style="background-color: #FF3C32"></div>
+              <div>
+                <h3>Terciario</h3>
+                <p>#FF3C32</p>
+                <p>CSS name: <code>--third-color</code></p>
               </div>
             </article>
-            <article class="overflow-hidden rounded-lg shadow-md bg-white">
-              <div class="h-24" style="background-color: #FF2419"></div>
-              <div class="p-4 text-center space-y-2">
-                <h3 class="font-bold text-base">Terciario Alt</h3>
-                <p class="text-gray-500 text-sm">#FF2419</p>
-                <p class="text-xs text-gray-600">CSS name: <code class="text-red-600 bg-red-50 px-1 rounded font-mono">--third-color-alt</code></p>
+            <article>
+              <div style="background-color: #FF2419"></div>
+              <div>
+                <h3>Terciario Alt</h3>
+                <p>#FF2419</p>
+                <p>CSS name: <code>--third-color-alt</code></p>
               </div>
             </article>
           </div>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] py-10">
-        <div class="w-full max-w-[var(--container)] mx-auto">
-          <hr class="border-0 border-t-2 border-[var(--storybook-divider)] mb-8">
-          <h1 class="text-[length:var(--h1-size)] leading-[length:var(--h1-line)] font-bold">h1</h1>
-          <h2 class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold">h2</h2>
-          <h3 class="text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold">h3</h3>
-          <h4 class="text-[length:var(--h4-size)] leading-[length:var(--h4-line)] font-semibold">h4</h4>
-          <h5 class="text-[length:var(--h5-size)] leading-[length:var(--h5-line)] font-semibold">h5</h5>
-          <h6 class="text-[length:var(--h6-size)] leading-[length:var(--h6-line)] font-semibold">h6</h6>
-          <ul class="my-6 list-disc pl-10">
-            <li class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</li>
-            <li class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</li>
+      <section>
+        <div>
+          <hr>
+          <h1>h1</h1>
+          <h2>h2</h2>
+          <h3>h3</h3>
+          <h4>h4</h4>
+          <h5>h5</h5>
+          <h6>h6</h6>
+          <ul>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</li>
           </ul>
-          <hr class="border-0 border-t-2 border-[var(--storybook-divider)] my-8">
-          <p class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)] mb-5">
+          <hr>
+          <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi,
             dolorem autem maiores quis dolor, reprehenderit delectus quia dolore,
             incidunt obcaecati sequi labore hic? Soluta doloremque vitae explicabo
             assumenda fugit tenetur.
           </p>
-          <p class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)] mb-5">
+          <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi,
             dolorem autem maiores quis dolor, reprehenderit delectus quia dolore,
             incidunt obcaecati sequi labore hic? Soluta doloremque vitae explicabo
@@ -107,8 +107,8 @@
           </p>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
-        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato] flex gap-2 flex-col">
+      <section>
+        <div>
           <pre class="language-css" contenteditable="true" spellcheck="false">
             <style contenteditable spellcheck="false" style="display: block; min-height: 100px;">.editor-css {
 	background-color: #000; 
@@ -117,7 +117,7 @@
 }
             </style></pre>
           <div class="editor-css">
-            <h1 class="text-[length:var(--h1-size)] leading-[length:var(--h1-line)] font-bold">editor-css</h1>
+            <h1>editor-css</h1>
           </div>
         </div>
       </section>
@@ -145,62 +145,62 @@
         	});
         });
       </script>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
-        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
-          <h1 class="text-[length:var(--h1-size)] leading-[length:var(--h1-line)] font-bold">Flex</h1>
-          <div class="flex flex-wrap">
-            <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 xxl:w-1/7 p-3">
-              <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Core Module1</b></span></div>
+      <section>
+        <div>
+          <h1>Flex</h1>
+          <div>
+            <div>
+              <div><span><b>Core Module1</b></span></div>
             </div>
-            <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 xxl:w-1/7 p-3">
-              <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Core Module2</b></span></div>
+            <div>
+              <div><span><b>Core Module2</b></span></div>
             </div>
-            <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 xxl:w-1/7 p-3">
-              <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Core Module3</b></span></div>
+            <div>
+              <div><span><b>Core Module3</b></span></div>
             </div>
-            <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 xxl:w-1/7 p-3">
-              <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Core Module4</b></span></div>
+            <div>
+              <div><span><b>Core Module4</b></span></div>
             </div>
-            <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 xxl:w-1/7 p-3">
-              <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Core Module5</b></span></div>
+            <div>
+              <div><span><b>Core Module5</b></span></div>
             </div>
-            <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 xxl:w-1/7 p-3">
-              <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Core Module6</b></span></div>
+            <div>
+              <div><span><b>Core Module6</b></span></div>
             </div>
-            <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 xxl:w-1/7 p-3">
-              <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Core Module7</b></span></div>
+            <div>
+              <div><span><b>Core Module7</b></span></div>
             </div>
-            <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 xxl:w-1/7 p-3">
-              <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Core Module8</b></span></div>
+            <div>
+              <div><span><b>Core Module8</b></span></div>
             </div>
-            <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 xxl:w-1/7 p-3">
-              <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Core Module9</b></span></div>
+            <div>
+              <div><span><b>Core Module9</b></span></div>
             </div>
-            <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 xxl:w-1/7 p-3">
-              <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Core Module10</b></span></div>
+            <div>
+              <div><span><b>Core Module10</b></span></div>
             </div>
           </div>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
-        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
-          <h2 class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold text-red-500">grid</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 m:grid-cols-3 l:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 xxl:grid-cols-7 gap-5">
-            <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Internal Module1</b></span></div>
-            <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Internal Module2</b></span></div>
-            <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Internal Module3</b></span></div>
-            <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Internal Module4</b></span></div>
-            <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Internal Module5</b></span></div>
-            <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Internal Module6</b></span></div>
-            <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Internal Module7</b></span></div>
-            <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Internal Module8</b></span></div>
-            <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Internal Module9</b></span></div>
-            <div class="bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center"><span><b>Internal Module10</b></span></div>
+      <section>
+        <div>
+          <h2>grid</h2>
+          <div>
+            <div><span><b>Internal Module1</b></span></div>
+            <div><span><b>Internal Module2</b></span></div>
+            <div><span><b>Internal Module3</b></span></div>
+            <div><span><b>Internal Module4</b></span></div>
+            <div><span><b>Internal Module5</b></span></div>
+            <div><span><b>Internal Module6</b></span></div>
+            <div><span><b>Internal Module7</b></span></div>
+            <div><span><b>Internal Module8</b></span></div>
+            <div><span><b>Internal Module9</b></span></div>
+            <div><span><b>Internal Module10</b></span></div>
           </div>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
-        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
+      <section>
+        <div>
                 <div><img src="assets/img4.jpg" style="width:100px">
                   <p>slider_item_1</p>
                 </div>
@@ -235,8 +235,8 @@
                 </div>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
-        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
+      <section>
+        <div>
           <ul>
             <li>lorem1</li>
             <li>lorem2</li>
@@ -253,16 +253,16 @@
           </ol>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
-        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
-          <h1 class="text-[length:var(--h1-size)] leading-[length:var(--h1-line)] font-bold">Write Markdown in the html file</h1><ul>
+      <section>
+        <div>
+          <h1>Write Markdown in the html file</h1><ul>
 <li>Lorem ipsum dolor sit amet consectetur adipisicing <code>elit</code>.</li>
 <li>Lorem ipsum dolor sit amet consectetur adipisicing <code>elit</code>.</li>
 <li>Lorem ipsum dolor sit amet consectetur adipisicing <code>elit</code>.</li>
 <li>Lorem ipsum dolor sit amet consectetur adipisicing <code>elit</code>.</li>
 </ul>
 
-          <h1 class="text-[length:var(--h1-size)] leading-[length:var(--h1-line)] font-bold">Write Markdown in the html file (html)</h1><pre><code class="language-html">	&lt;!DOCTYPE html&gt;
+          <h1>Write Markdown in the html file (html)</h1><pre><code class="language-html">	&lt;!DOCTYPE html&gt;
 	&lt;html lang=&quot;en&quot;&gt;
 	&lt;head&gt;
 		&lt;title&gt;Pug&lt;/title&gt;
@@ -282,7 +282,7 @@
 	&lt;/html&gt;
 </code></pre>
 
-          <h1 class="text-[length:var(--h1-size)] leading-[length:var(--h1-line)] font-bold">Importing Markdown files in the html</h1><h1>This is a Markdown Example</h1>
+          <h1>Importing Markdown files in the html</h1><h1>This is a Markdown Example</h1>
 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
 <pre><code class="language-html">&lt;a class=&quot;button&quot;&gt;.button.first-color&lt;/a&gt;
 &lt;a class=&quot;button second-color&quot;&gt;.button.second-color&lt;/a&gt;
@@ -301,17 +301,17 @@
 
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
-        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
-          <h2 class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold">side bar</h2>
-          <div class="flex flex-col lg:flex-row">
-            <div class="order-2 lg:order-1 w-full lg:w-[400px] bg-gray-300 h-32">first Div</div>
-            <div class="order-1 lg:order-2 w-full lg:flex-1 bg-gray-200 h-32">Second Div</div>
+      <section>
+        <div>
+          <h2>side bar</h2>
+          <div>
+            <div>first Div</div>
+            <div>Second Div</div>
           </div>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
-        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato] flex gap-2 bg-[gray]"> 
+      <section>
+        <div>
           <svg width="28" height="28">
             <use xlink:href="./assets/sprite.svg#twitch"></use>
           </svg>
@@ -332,8 +332,8 @@
           </svg>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
-        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
+      <section>
+        <div>
           <table>
             <thead>
               <tr>
@@ -384,8 +384,8 @@
           </table>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
-        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
+      <section>
+        <div>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi,
             dolorem autem maiores quis dolor, reprehenderit delectus quia dolore,
@@ -399,9 +399,9 @@
         </div>
       </section>
     </main>
-    <footer class="w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--header-height)]">
+    <footer class="main-footer">
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="index.js?t=1784220221602"></script>
+    <script src="index.js?t=1784225624584"></script>
   </body>
 </html>

@@ -1,0 +1,58 @@
+---
+description: Simetria de componentes Pug/SCSS/JS (kebab-case, camelCase) y arquitectura BEM
+globs: src/pug/components/**/*.pug,src/scss/modules/**/*.scss,src/js/modules/**/*.js
+alwaysApply: false
+---
+
+# Simetria de componentes (Pug + SCSS + JS)
+
+Cada componente es un trio con el mismo nombre base. No crees uno sin su equivalente cuando el componente lo necesite.
+
+## Nombres de archivo
+
+| Capa | Ruta | Convencion | Ejemplo |
+|------|------|------------|---------|
+| Markup | `src/pug/components/` | `kebab-case.pug` | `color-table.pug` |
+| Estilos | `src/scss/modules/` | `_kebab-case.scss` | `_color-table.scss` |
+| Script | `src/js/modules/` | `camelCase.js` | `colorTable.js` |
+
+Mas ejemplos:
+
+- `flex-module.pug` → `_flex-module.scss` → `flexModule.js`
+- `sidebar-module.pug` → `_sidebar-module.scss` → `sidebarModule.js`
+- `typography-module.pug` → `_typography-module.scss` → `typographyModule.js`
+
+## Registro obligatorio
+
+1. En `src/scss/modules/modules.scss` agrega `@use "color-table";` (sin guion bajo ni extension).
+2. Si hay JS, en `src/js/index.js` importa y ejecuta el modulo (`import colorTable from './modules/colorTable'`).
+3. El JS sigue el patron de `export default` con funcion flecha en `const` (ver regla de modulos JS).
+
+## BEM (obligatorio)
+
+El bloque BEM es el nombre del componente en `kebab-case`.
+
+```pug
+section(class="color-table")
+	div(class="color-table__container")
+		h2(class="color-table__title") Tabla de colores
+		article(class="color-table__card color-table__card--featured")
+```
+
+```scss
+.color-table {
+	&__container { }
+	&__title { }
+	&__card {
+		&--featured { }
+	}
+}
+```
+
+## Reglas
+
+1. Un componente Pug nuevo exige su `_nombre.scss` en `src/scss/modules/`.
+2. Si el componente necesita comportamiento, crea el `.js` en camelCase en `src/js/modules/`.
+3. No inventes nombres distintos entre capas (`colorTable.pug`, `_colors.scss`, etc.).
+4. Clases solo en BEM (`bloque`, `bloque__elemento`, `bloque--modificador`).
+5. No uses utilidades tipo Tailwind en el markup del componente.

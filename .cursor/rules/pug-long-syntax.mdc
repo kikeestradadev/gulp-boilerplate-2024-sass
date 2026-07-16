@@ -1,34 +1,37 @@
 ---
-description: Usar sintaxis larga y explicita en Pug, sin shorthand estilo Emmet
-globs: "**/*.pug"
+description: Obliga sintaxis Pug extendida con atributos explicitos; prohibe shorthand tag.class / tag#id
+globs: src/pug/**/*.pug
 alwaysApply: false
 ---
 
-# Sintaxis Pug Explicita
+# Sintaxis Pug extendida
 
-En este proyecto, los componentes Pug se escriben con sintaxis larga para que las clases, variables y partes dinamicas sean mas legibles.
+En este proyecto, el markup Pug siempre usa sintaxis larga. `class` e `id` se declaran como atributos explicitos.
+
+El naming de los valores (`class-name`, `idName`, BEM, etc.) lo define el autor u otras reglas del proyecto. Esta regla solo exige la forma de escritura.
 
 ## Correcto
 
 ```pug
-header(class='fixed top-0 left-0 z-10 w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--header-height)]')
-section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px]")
-div(class="w-full max-w-[var(--container)] mx-auto")
-h2(class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold") Titulo
+header(class='main-header')
+header(class='class-name' id='idName')
+section(class='color-table')
+div(class='color-table__container')
 ```
 
 ## Incorrecto
 
 ```pug
-header.fixed.top-0.left-0.z-10.w-full
-section.w-full.max-w-[var(--main-container)].mx-auto
-div.container
-h2.text-3xl.font-bold Titulo
+header.main-header
+header.class-name#idName
+section.color-table
+.solo-clase
+#solo-id
 ```
 
 ## Reglas
 
-1. No uses shorthand de Pug tipo `tag.class`, `tag#id`, `.class` o cadenas estilo Emmet.
-2. Declara las clases con atributo explicito: `tag(class="...")` o `tag(class='...')`.
-3. Para clases dinamicas o variables CSS, manten todo dentro del atributo `class`.
-4. Prioriza legibilidad sobre brevedad, especialmente en componentes, layout, storybook y bloques con tokens CSS.
+1. No uses shorthand de Pug: `tag.class`, `tag#id`, `.clase` o `#id`.
+2. Usa atributos explicitos: `tag(class='...')`, `tag(id='...')`, o ambos juntos.
+3. Clases dinamicas o variables van dentro del atributo `class`.
+4. Prioriza legibilidad sobre brevedad.

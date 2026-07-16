@@ -1,12 +1,12 @@
-section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]") 
-	div(class="w-full max-w-[var(--container)] mx-auto border border-[tomato]") 
-		h1(class="text-[length:var(--h1-size)] leading-[length:var(--h1-line)] font-bold") Write Markdown in the html file
+section
+	div
+		h1 Write Markdown in the html file
 		:markdown-it
 			- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
 			- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
 			- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
 			- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
-		h1(class="text-[length:var(--h1-size)] leading-[length:var(--h1-line)] font-bold") Write Markdown in the html file (html)
+		h1 Write Markdown in the html file (html)
 		:markdown-it(html)
 			```html
 				<!DOCTYPE html>
@@ -28,6 +28,5 @@ section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border bor
 				</body>
 				</html>
 			```
-		h1(class="text-[length:var(--h1-size)] leading-[length:var(--h1-line)] font-bold") Importing Markdown files in the html
+		h1 Importing Markdown files in the html
 		include:markdown-it(html) ../../md/example.md
-

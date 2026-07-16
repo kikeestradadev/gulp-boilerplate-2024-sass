@@ -1,20 +1,20 @@
 -let internalSaludo = 'Internal Module';	
-section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]") 
-	div(class="w-full max-w-[var(--container)] mx-auto border border-[tomato]") 
-		h2(class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold text-red-500") grid
-		div(class='grid grid-cols-1 sm:grid-cols-2 m:grid-cols-3 l:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 xxl:grid-cols-7 gap-5')
+section
+	div
+		h2 grid
+		div
 			-for(let i = 1; i<=10; i++)
-				div(class='bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center')
+				div
 					span: b= internalSaludo
 						| #{i}
-section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]") 
-	div(class="w-full max-w-[var(--container)] mx-auto border border-[tomato]") 
-		h2(class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold") side bar
-		div(class='flex flex-col lg:flex-row')
-			div(class='order-2 lg:order-1 w-full lg:w-[400px] bg-gray-300 h-32') first Div
-			div(class='order-1 lg:order-2 w-full lg:flex-1 bg-gray-200 h-32') Second Div
-section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]") 
-	div(class="w-full max-w-[var(--container)] mx-auto border border-[tomato]") 
+section
+	div
+		h2 side bar
+		div
+			div first Div
+			div Second Div
+section
+	div
 		table
 			thead
 				tr
@@ -35,8 +35,8 @@ section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border bor
 			-for(let i = 1; i<=5; i++)
 				li lorem
 					| #{i}
-section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]") 
-	div(class="w-full max-w-[var(--container)] mx-auto border border-[tomato]") 
+section
+	div
 		p
 			| Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi,
 			| dolorem autem maiores quis dolor, reprehenderit delectus quia dolore,

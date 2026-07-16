@@ -1,9 +1,9 @@
 -let internalSaludo = 'Internal Module';	
-section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]") 
-	div(class="w-full max-w-[var(--container)] mx-auto border border-[tomato]") 
-		h2(class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold text-red-500") grid
-		div(class='grid grid-cols-1 sm:grid-cols-2 m:grid-cols-3 l:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 xxl:grid-cols-7 gap-5')
+section
+	div
+		h2 grid
+		div
 			-for(let i = 1; i<=10; i++)
-				div(class='bg-red-300 min-[640px]:max-[1280px]:bg-[blue] h-32 flex items-center justify-center')
+				div
 					span: b= internalSaludo
 						| #{i}

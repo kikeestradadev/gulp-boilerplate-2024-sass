@@ -30,7 +30,6 @@
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.4",
     "@babel/register": "^7.24.6",
-    "@tailwindcss/postcss": "^4.1.11",
     "autoprefixer": "^10.4.20",
     "babelify": "^10.0.0",
     "browser-sync": "^3.0.3",
@@ -54,6 +53,7 @@
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^10.0.0",
     "gulp-pug": "^5.0.0",
+    "gulp-sass": "^6.0.1",
     "gulp-sitemap": "^8.0.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-strip-css-comments": "^3.0.0",
@@ -66,8 +66,7 @@
     "imagemin-svgo": "^11.0.1",
     "jstransformer-markdown-it": "^3.0.0",
     "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.0.14",
+    "sass": "^1.101.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }

@@ -1,0 +1,71 @@
+//layout
+:root {
+	--s					: 0px;
+	--sm				: 480px;
+	--m					: 640px;
+	--l					: 960px;
+	--lg				: 1280px;
+	--xl				: 1600px;
+	--xxl				: 1800px;
+	--xxxl				: 1920px;
+	--xxxxl				: 6000px;
+	--header-height 	: 3rem;
+	--main-container	: 3500px;
+	--container			: 1600px;
+	@media (width >= var(--l)) {
+		--header-height 	: 4rem;
+	}
+	//native color vars	
+	--header-bg      		: #007BDF;
+	--body-bg      			: #ffffff;
+	--footer-bg      		: #007BDF;
+
+}
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+::selection {
+	color: white;
+	background: #00CBFF;
+}
+
+strong {
+	font-weight 	: 700;
+}
+
+body {
+	margin         	: var(--header-height) 0 0 0;
+	min-height     	: calc(100vh - var(--header-height));
+	background 		: var(--body-bg);
+	display        	: flex;
+	flex-direction 	: column;
+}
+.main-header{
+	background 		: var(--header-bg);
+	min-height     	: var(--header-height);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	
+}
+.main-container{
+	width: 100%;
+	max-width: var(--main-container);
+	margin: 0 auto;
+}
+.main-container{
+	width: 100%;
+	max-width: var(--container);
+	margin: 0 auto;
+}
+.main-footer {
+	background 		: var(--footer-bg);
+	color      		: #FFF;
+	padding    		: 2rem 0;
+	font-size  		: fontSize(small);
+	margin-top 		: auto;
+}
+	
