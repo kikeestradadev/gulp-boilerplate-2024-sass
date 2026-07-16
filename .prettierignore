@@ -1,0 +1,12 @@
+# Dependencias
+node_modules
+package-lock.json
+
+# Archivos compilados
+public/
+dist/
+
+# Otros
+.DS_Store
+.env
+.env.* 
