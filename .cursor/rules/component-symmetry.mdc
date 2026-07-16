@@ -49,6 +49,34 @@ section(class="color-table")
 }
 ```
 
+## Tokens y breakpoints
+
+Los valores viven en `src/scss/core/_breakpoints.scss` (Sass) y se espejan a `:root` en `_layout.scss` (CSS).
+
+**Importante:** los navegadores no resuelven `var()` dentro de `@media`.
+
+| Uso | Forma correcta |
+|-----|----------------|
+| Media queries | variables Sass (`$sm`, `$l`, `$lg`) |
+| Propiedades CSS | variables `:root` (`var(--container)`, `var(--color-yellow)`) |
+
+```scss
+@use "breakpoints" as *;
+
+.color-table {
+	max-width: var(--container); // OK: propiedad
+
+	@media (width >= $sm) { } // OK: Sass en media query
+}
+```
+
+No uses:
+
+```scss
+@media (width >= var(--sm)) { } // no funciona en navegadores
+@media (width >= 480px) { }     // evita hardcode si existe token
+```
+
 ## Reglas
 
 1. Un componente Pug nuevo exige su `_nombre.scss` en `src/scss/modules/`.
@@ -56,3 +84,4 @@ section(class="color-table")
 3. No inventes nombres distintos entre capas (`colorTable.pug`, `_colors.scss`, etc.).
 4. Clases solo en BEM (`bloque`, `bloque__elemento`, `bloque--modificador`).
 5. No uses utilidades tipo Tailwind en el markup del componente.
+6. Todo SCSS empieza con `@use "breakpoints" as *;`. En `@media` usa `$sm` / `$l` / `$lg`. En propiedades usa `var(--...)`.

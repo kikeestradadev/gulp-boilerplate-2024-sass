@@ -74,7 +74,9 @@ gulp.task('styles', () => {
 			}
 		}))
 		.pipe(sourcemaps.init())
-		.pipe(sass().on('error', sass.logError))
+		.pipe(sass({
+			loadPaths: [path.resolve('src/scss/core')]
+		}).on('error', sass.logError))
 		.pipe(postcss([
 			autoprefixer()
 		]))

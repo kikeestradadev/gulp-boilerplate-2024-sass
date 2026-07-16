@@ -42,9 +42,15 @@ section(class="color-table")
 Crear `src/scss/modules/_color-table.scss` con BEM anidado:
 
 ```scss
+@use "breakpoints" as *;
+
 .color-table {
-	&__container { }
+	&__container {
+		max-width: var(--container); // CSS var en propiedades
+	}
 	&__title { }
+
+	@media (width >= $sm) { } // Sass var en media queries
 }
 ```
 
@@ -82,3 +88,6 @@ import colorTable from './modules/colorTable';
 2. Estilos siempre con BEM.
 3. No agregues clases utilitarias de Tailwind.
 4. No dejes el SCSS sin registrar en `modules.scss`.
+5. En propiedades CSS usa `var(--container)`, `var(--color-*)`, etc.
+6. Todo SCSS nuevo empieza con `@use "breakpoints" as *;`.
+7. En media queries usa `$sm`, `$l`, `$lg`. `var()` no funciona en `@media`.

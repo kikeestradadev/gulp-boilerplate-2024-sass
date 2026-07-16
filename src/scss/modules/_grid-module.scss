@@ -1,0 +1,106 @@
+@use "breakpoints" as *;
+
+// ==========================================================================
+// Grid system (CSS Grid, estilo Bootstrap mobile-first)
+// Uso:
+//   .grid
+//     .grid__col.grid__col--12.grid__col--sm-6.grid__col--l-4
+// ==========================================================================
+
+$grid-columns: 12;
+$grid-gap: 1.25rem;
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(#{$grid-columns}, minmax(0, 1fr));
+	gap: $grid-gap;
+	width: 100%;
+
+	&--gap-0 {
+		gap: 0;
+	}
+
+	&--gap-sm {
+		gap: 0.75rem;
+	}
+
+	&--gap-lg {
+		gap: 2rem;
+	}
+
+	&__col {
+		min-width: 0;
+		grid-column: span #{$grid-columns};
+	}
+}
+
+// --- Spans base (mobile / sin prefijo) ---
+@for $i from 1 through $grid-columns {
+	.grid__col--#{$i} {
+		grid-column: span #{$i};
+	}
+}
+
+// --- Spans por breakpoint ---
+@mixin grid-cols($prefix, $bp) {
+	@media (width >= $bp) {
+		@for $i from 1 through $grid-columns {
+			.grid__col--#{$prefix}-#{$i} {
+				grid-column: span #{$i};
+			}
+		}
+	}
+}
+
+@include grid-cols("sm", $sm);
+@include grid-cols("m", $m);
+@include grid-cols("l", $l);
+@include grid-cols("lg", $lg);
+@include grid-cols("xl", $xl);
+@include grid-cols("xxl", $xxl);
+
+// --- Demo del modulo ---
+.grid-module {
+	width: 100%;
+	padding: 2.5rem 0;
+
+	&__container {
+		width: 100%;
+		max-width: var(--container);
+		margin: 0 auto;
+	}
+
+	&__title {
+		margin: 0 0 0.5rem;
+		font-weight: 700;
+	}
+
+	&__lead {
+		margin: 0 0 1.5rem;
+		color: #6b7280;
+	}
+
+	&__example {
+		margin-bottom: 2rem;
+	}
+
+	&__example-title {
+		margin: 0 0 0.75rem;
+		font-size: 1rem;
+		font-weight: 600;
+	}
+
+	&__cell {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 4rem;
+		padding: 0.75rem;
+		background: #bfdbfe;
+		border: 1px solid #3b82f6;
+		border-radius: 6px;
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-align: center;
+	}
+}

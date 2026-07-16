@@ -1,9 +1,33 @@
--let internalSaludo = 'Internal Module';	
-section
-	div
-		h2 grid
-		div
-			-for(let i = 1; i<=10; i++)
-				div
-					span: b= internalSaludo
-						| #{i}
+section(class='grid-module')
+	div(class='grid-module__container')
+		h2(class='grid-module__title') Grid system
+		p(class='grid-module__lead') Cuadricula de 12 columnas con CSS Grid (mobile-first).
+
+		div(class='grid-module__example')
+			h3(class='grid-module__example-title') 12 columnas iguales
+			div(class='grid')
+				-for (let i = 1; i <= 12; i++)
+					div(class='grid__col grid__col--1')
+						div(class='grid-module__cell')= i
+
+		div(class='grid-module__example')
+			h3(class='grid-module__example-title') Responsive: 12 / sm-6 / l-4 / lg-3
+			div(class='grid')
+				-for (let i = 1; i <= 4; i++)
+					div(class='grid__col grid__col--12 grid__col--sm-6 grid__col--l-4 grid__col--lg-3')
+						div(class='grid-module__cell') Col #{i}
+
+		div(class='grid-module__example')
+			h3(class='grid-module__example-title') Layout mixto: 8 + 4
+			div(class='grid')
+				div(class='grid__col grid__col--12 grid__col--l-8')
+					div(class='grid-module__cell') Main (8)
+				div(class='grid__col grid__col--12 grid__col--l-4')
+					div(class='grid-module__cell') Sidebar (4)
+
+		div(class='grid-module__example')
+			h3(class='grid-module__example-title') Tercios: 4 + 4 + 4
+			div(class='grid')
+				-for (let i = 1; i <= 3; i++)
+					div(class='grid__col grid__col--12 grid__col--m-4')
+						div(class='grid-module__cell') 1/3 — #{i}
