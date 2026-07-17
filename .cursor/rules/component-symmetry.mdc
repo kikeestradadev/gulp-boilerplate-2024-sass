@@ -1,87 +1,73 @@
 ---
-description: Simetria de componentes Pug/SCSS/JS (kebab-case, camelCase) y arquitectura BEM
+description: Naming Convention obligatorio para componentes Pug/SCSS/JS (mismo nombre base)
 globs: src/pug/components/**/*.pug,src/scss/modules/**/*.scss,src/js/modules/**/*.js
 alwaysApply: false
 ---
 
-# Simetria de componentes (Pug + SCSS + JS)
+# Naming Convention de componentes
 
-Cada componente es un trio con el mismo nombre base. No crees uno sin su equivalente cuando el componente lo necesite.
+Al crear un componente, las tres capas usan el **mismo nombre base** con distinta convencion de escritura.
 
-## Nombres de archivo
+## Canonico
 
-| Capa | Ruta | Convencion | Ejemplo |
+```
+main-menu.pug
+_main-menu.scss
+mainMenu.js
+```
+
+| Capa | Ruta | Convencion | Archivo |
 |------|------|------------|---------|
-| Markup | `src/pug/components/` | `kebab-case.pug` | `color-table.pug` |
-| Estilos | `src/scss/modules/` | `_kebab-case.scss` | `_color-table.scss` |
-| Script | `src/js/modules/` | `camelCase.js` | `colorTable.js` |
+| Markup | `src/pug/components/` | `kebab-case.pug` | `main-menu.pug` |
+| Estilos | `src/scss/modules/` | `_kebab-case.scss` | `_main-menu.scss` |
+| Script | `src/js/modules/` | `camelCase.js` | `mainMenu.js` |
 
 Mas ejemplos:
 
-- `flex-module.pug` → `_flex-module.scss` → `flexModule.js`
-- `sidebar-module.pug` → `_sidebar-module.scss` → `sidebarModule.js`
-- `typography-module.pug` → `_typography-module.scss` → `typographyModule.js`
+- `color-table.pug` → `_color-table.scss` → `colorTable.js`
+- `floating-button.pug` → `_floating-button.scss` → `floatingButton.js`
+- `grid-module.pug` → `_grid-module.scss` → `gridModule.js`
 
-## Registro obligatorio
+## Incorrecto
 
-1. En `src/scss/modules/modules.scss` agrega `@use "color-table";` (sin guion bajo ni extension).
-2. Si hay JS, en `src/js/index.js` importa y ejecuta el modulo (`import colorTable from './modules/colorTable'`).
-3. El JS sigue el patron de `export default` con funcion flecha en `const` (ver regla de modulos JS).
+```
+mainMenu.pug
+_mainMenu.scss
+main-menu.js
+menu.pug + _nav.scss + navigation.js
+```
 
-## BEM (obligatorio)
+## Registro
 
-El bloque BEM es el nombre del componente en `kebab-case`.
+1. SCSS: en `src/scss/modules/modules.scss` → `@use "main-menu";`
+2. JS (si hay comportamiento): en `src/js/index.js` → `import mainMenu from './modules/mainMenu'` y ejecutarlo en la IIFE.
+3. JS sigue `const mainMenu = () => {}; export default mainMenu;`
+
+## BEM
+
+El bloque BEM = kebab-case del componente:
 
 ```pug
-section(class="color-table")
-	div(class="color-table__container")
-		h2(class="color-table__title") Tabla de colores
-		article(class="color-table__card color-table__card--featured")
+nav(class='main-menu')
+	ul(class='main-menu__list')
+		li(class='main-menu__item main-menu__item--active')
 ```
-
-```scss
-.color-table {
-	&__container { }
-	&__title { }
-	&__card {
-		&--featured { }
-	}
-}
-```
-
-## Tokens y breakpoints
-
-Los valores viven en `src/scss/core/_breakpoints.scss` (Sass) y se espejan a `:root` en `_layout.scss` (CSS).
-
-**Importante:** los navegadores no resuelven `var()` dentro de `@media`.
-
-| Uso | Forma correcta |
-|-----|----------------|
-| Media queries | variables Sass (`$sm`, `$l`, `$lg`) |
-| Propiedades CSS | variables `:root` (`var(--container)`, `var(--color-yellow)`) |
 
 ```scss
 @use "breakpoints" as *;
 
-.color-table {
-	max-width: var(--container); // OK: propiedad
-
-	@media (width >= $sm) { } // OK: Sass en media query
+.main-menu {
+	&__list { }
+	&__item {
+		&--active { }
+	}
 }
-```
-
-No uses:
-
-```scss
-@media (width >= var(--sm)) { } // no funciona en navegadores
-@media (width >= 480px) { }     // evita hardcode si existe token
 ```
 
 ## Reglas
 
-1. Un componente Pug nuevo exige su `_nombre.scss` en `src/scss/modules/`.
-2. Si el componente necesita comportamiento, crea el `.js` en camelCase en `src/js/modules/`.
-3. No inventes nombres distintos entre capas (`colorTable.pug`, `_colors.scss`, etc.).
-4. Clases solo en BEM (`bloque`, `bloque__elemento`, `bloque--modificador`).
-5. No uses utilidades tipo Tailwind en el markup del componente.
-6. Todo SCSS empieza con `@use "breakpoints" as *;`. En `@media` usa `$sm` / `$l` / `$lg`. En propiedades usa `var(--...)`.
+1. Un Pug nuevo exige su `_nombre.scss` simetrico.
+2. Si necesita JS, el archivo va en camelCase con el mismo nombre base.
+3. No mezcles nombres distintos entre capas.
+4. Clases solo BEM.
+5. Todo SCSS empieza con `@use "breakpoints" as *;`.

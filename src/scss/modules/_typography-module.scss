@@ -1,0 +1,115 @@
+@use "breakpoints" as *;
+
+.typography-module {
+	width: 100%;
+	padding: 2.5rem 0;
+
+	&__container {
+		width: 100%;
+		max-width: var(--container);
+		margin: 0 auto;
+	}
+
+	&__title {
+		margin: 0 0 0.5rem;
+		font-weight: 700;
+	}
+
+	&__lead {
+		margin: 0 0 1.5rem;
+		color: #6b7280;
+	}
+
+	&__specimen {
+		margin-bottom: 2rem;
+		padding: 1.5rem;
+		border: 1px solid #e5e7eb;
+		border-radius: 12px;
+		background: #fff;
+	}
+
+	&__family-name {
+		margin: 0 0 0.35rem;
+		font-size: clamp(2.5rem, 6vw, 4.5rem);
+		font-weight: 700;
+		line-height: 1.1;
+		letter-spacing: -0.04em;
+		color: var(--header-color, #1f2024);
+	}
+
+	&__meta {
+		margin: 0 0 1.25rem;
+		font-size: 0.9375rem;
+		color: #6b7280;
+	}
+
+	&__alphabet,
+	&__pangram {
+		margin: 0 0 0.75rem;
+		font-size: 1.25rem;
+		line-height: 1.5;
+	}
+
+	&__pangram {
+		margin-bottom: 0;
+		color: #374151;
+	}
+
+	&__weights {
+		display: grid;
+		gap: 0.75rem;
+		margin-bottom: 2rem;
+	}
+
+	&__weight {
+		display: grid;
+		gap: 0.25rem;
+		margin: 0;
+		padding: 0.85rem 1rem;
+		border: 1px solid #e5e7eb;
+		border-radius: 8px;
+		background: #fff;
+	}
+
+	&__weight-label {
+		font-size: 0.8125rem;
+		font-weight: 600;
+		color: #6b7280;
+	}
+
+	&__weight-sample {
+		font-size: 1.125rem;
+		line-height: 1.4;
+	}
+
+	&__divider {
+		margin: 0 0 1.5rem;
+		border: 0;
+		border-top: 2px solid #e5e7eb;
+	}
+
+	&__scale-title {
+		margin: 0 0 1rem;
+		font-weight: 700;
+	}
+
+	&__scale {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			margin-bottom: 0.75rem;
+		}
+
+		ul {
+			margin: 1rem 0;
+			padding-left: 1.25rem;
+		}
+
+		p {
+			margin: 0 0 1rem;
+		}
+	}
+}

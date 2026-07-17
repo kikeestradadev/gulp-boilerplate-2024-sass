@@ -1,93 +1,87 @@
 ---
 name: create-component
-description: Crea un componente simetrico Pug + SCSS (BEM) + JS opcional con el mismo nombre base. Usar al crear o scaffold un componente nuevo, o cuando el usuario pida un modulo UI, componente Pug, o pareja markup/estilos/script.
+description: Crea un componente simetrico con naming Convention Pug kebab-case + SCSS _kebab-case + JS camelCase (ej. main-menu). Usar al crear o scaffold un componente, modulo UI, o pareja markup/estilos/script.
 ---
 
-# Crear componente (Pug + SCSS + JS)
+# Crear componente (Naming Convention)
 
-## Naming
+## Canonico
+
+```
+main-menu.pug
+_main-menu.scss
+mainMenu.js
+```
 
 | Archivo | Patron | Ejemplo |
 |---------|--------|---------|
-| `src/pug/components/{name}.pug` | kebab-case | `color-table.pug` |
-| `src/scss/modules/_{name}.scss` | `_` + kebab-case | `_color-table.scss` |
-| `src/js/modules/{name}.js` | camelCase | `colorTable.js` |
+| `src/pug/components/{name}.pug` | kebab-case | `main-menu.pug` |
+| `src/scss/modules/_{name}.scss` | `_` + kebab-case | `_main-menu.scss` |
+| `src/js/modules/{name}.js` | camelCase | `mainMenu.js` |
 
-El bloque BEM = kebab-case del componente (ej. `.color-table`).
+Bloque BEM = kebab-case (`.main-menu`).
 
 ## Checklist
 
-Copia y completa:
-
 ```
-- [ ] Pug en src/pug/components/
-- [ ] SCSS parcial en src/scss/modules/
-- [ ] @use en modules.scss
-- [ ] JS solo si hace falta + import en index.js
-- [ ] Clases BEM en Pug y SCSS
+- [ ] Pug: src/pug/components/main-menu.pug
+- [ ] SCSS: src/scss/modules/_main-menu.scss
+- [ ] @use "main-menu" en modules.scss
+- [ ] JS solo si hace falta: mainMenu.js + import en index.js
+- [ ] Clases BEM
+- [ ] @use "breakpoints" as *; al inicio del SCSS
 ```
 
 ## Paso 1 — Pug
 
-Raiz con la clase bloque BEM:
-
 ```pug
-section(class="color-table")
-	div(class="color-table__container")
-		h2(class="color-table__title") Tabla de colores
+nav(class='main-menu')
+	ul(class='main-menu__list')
+		li(class='main-menu__item') Item
 ```
 
 ## Paso 2 — SCSS
 
-Crear `src/scss/modules/_color-table.scss` con BEM anidado:
-
 ```scss
 @use "breakpoints" as *;
 
-.color-table {
-	&__container {
-		max-width: var(--container); // CSS var en propiedades
-	}
-	&__title { }
+.main-menu {
+	&__list { }
+	&__item { }
 
-	@media (width >= $sm) { } // Sass var en media queries
+	@media (width >= $sm) { }
 }
 ```
 
-En `src/scss/modules/modules.scss`:
+En `modules.scss`:
 
 ```scss
-@use "color-table";
+@use "main-menu";
 ```
 
 ## Paso 3 — JS (solo si hay comportamiento)
 
-`src/js/modules/colorTable.js`:
-
 ```js
-const colorTable = () => {
+const mainMenu = () => {
 	// logica del componente
 };
 
-export default colorTable;
+export default mainMenu;
 ```
 
-En `src/js/index.js`:
+En `index.js`:
 
 ```js
-import colorTable from './modules/colorTable';
+import mainMenu from './modules/mainMenu';
 
 (() => {
-	colorTable();
+	mainMenu();
 })();
 ```
 
 ## Reglas
 
-1. Mismo nombre base en las tres capas; solo cambia la convencion (kebab / `_kebab` / camelCase).
-2. Estilos siempre con BEM.
-3. No agregues clases utilitarias de Tailwind.
+1. Mismo nombre base en las tres capas; solo cambia la convencion.
+2. Estilos con BEM.
+3. No mezcles nombres (`menu.pug` + `_nav.scss` + `navigation.js`).
 4. No dejes el SCSS sin registrar en `modules.scss`.
-5. En propiedades CSS usa `var(--container)`, `var(--color-*)`, etc.
-6. Todo SCSS nuevo empieza con `@use "breakpoints" as *;`.
-7. En media queries usa `$sm`, `$l`, `$lg`. `var()` no funciona en `@media`.
