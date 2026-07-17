@@ -1,0 +1,40 @@
+@use "breakpoints" as *;
+
+.floating-button {
+	position: fixed;
+	right: 1rem;
+	bottom: 1rem;
+	z-index: 100;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 3rem;
+	padding: 0.75rem 1.25rem;
+	border-radius: 999px;
+	background: var(--header-bg);
+	color: #fff;
+	font-size: 0.875rem;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	text-decoration: none;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+	transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+
+	&:hover {
+		text-decoration: none;
+		background: #006dc6;
+		transform: translateY(-2px);
+		box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+	}
+
+	&:focus-visible {
+		outline: 3px solid #00cbff;
+		outline-offset: 3px;
+	}
+
+	@media (width >= $sm) {
+		right: 1.5rem;
+		bottom: 1.5rem;
+		font-size: 1rem;
+	}
+}

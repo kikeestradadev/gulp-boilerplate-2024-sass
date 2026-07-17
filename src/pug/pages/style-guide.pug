@@ -1,12 +1,19 @@
 extends ../config/template
 
 append config
-	-currentPage		= "home"
-	-siteName			= 'Layouts'
+	-currentPage		= "style-guide"
+	-siteName			= 'Style Guide'
 	-content			= 'content'
-	-pageDescription	= 'Pagina inicial de MyBoilerplate'
+	-pageDescription	= 'Style Guide de MyBoilerplate'
 
 block main-header
 block main-container
+	include ../components/color-table
+	include ../components/typography-module
+	include ../components/table-module
+	include ../components/text-module
+	include ../components/json-data
+	include ../components/list-module
+	include ../components/sprite-svg
 block main-footer
 block scripts

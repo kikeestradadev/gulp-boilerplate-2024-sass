@@ -3,6 +3,7 @@ block config
 	-let content 			= 'My Page'
 	-let siteName 			= 'GulpBoilerplate'
 	-let pageDescription 	= 'Here is the description Page.'
+include ../components/floating-button
 doctype html
 html(lang='en' prefix='og: http://ogp.me/ns#', class='no-js') 
 	head
@@ -37,6 +38,10 @@ html(lang='en' prefix='og: http://ogp.me/ns#', class='no-js')
 		footer(class='main-footer')
 			block main-footer
 		//- here ends the Main Footer
+		if currentPage === 'home'
+			+floatingButton('style-guide.html', 'Style Guide')
+		else if currentPage === 'style-guide'
+			+floatingButton('index.html', 'Home')
 		script(src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js")
 		script(src="index.js")
 		block scripts
