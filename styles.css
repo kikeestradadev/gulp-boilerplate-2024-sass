@@ -940,6 +940,100 @@ img {
   }
 }
 
+.typography-module {
+  width: 100%;
+  padding: 2.5rem 0;
+}
+.typography-module__container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+.typography-module__title {
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+}
+.typography-module__lead {
+  margin: 0 0 1.5rem;
+  color: #6b7280;
+}
+.typography-module__specimen {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+}
+.typography-module__family-name {
+  margin: 0 0 0.35rem;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: var(--header-color, #1f2024);
+}
+.typography-module__meta {
+  margin: 0 0 1.25rem;
+  font-size: 0.9375rem;
+  color: #6b7280;
+}
+.typography-module__alphabet, .typography-module__pangram {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+.typography-module__pangram {
+  margin-bottom: 0;
+  color: #374151;
+}
+.typography-module__weights {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+.typography-module__weight {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+}
+.typography-module__weight-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #6b7280;
+}
+.typography-module__weight-sample {
+  font-size: 1.125rem;
+  line-height: 1.4;
+}
+.typography-module__divider {
+  margin: 0 0 1.5rem;
+  border: 0;
+  border-top: 2px solid #e5e7eb;
+}
+.typography-module__scale-title {
+  margin: 0 0 1rem;
+  font-weight: 700;
+}
+.typography-module__scale h1,
+.typography-module__scale h2,
+.typography-module__scale h3,
+.typography-module__scale h4,
+.typography-module__scale h5,
+.typography-module__scale h6 {
+  margin-bottom: 0.75rem;
+}
+.typography-module__scale ul {
+  margin: 1rem 0;
+  padding-left: 1.25rem;
+}
+.typography-module__scale p {
+  margin: 0 0 1rem;
+}
+
 /*here finish de website template core*/
 /*here start the hacks section*/
 /*here finish the hacks section*/
