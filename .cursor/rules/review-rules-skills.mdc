@@ -19,6 +19,6 @@ No omitas convenciones del proyecto por asumirlas. En especial:
 - Simetría Pug/SCSS/JS (`component-symmetry`)
 - Pug sintaxis larga + datos en `src/data/*-data.json` (`pug-long-syntax`, `pug-data-files`)
 - Módulos JS camelCase + Swiper CDN (`javascript-modules`, skill `create-slider-data`)
-- Formularios fake / simulación backend (`fake-backend-forms`, skill `create-fake-backend-form`)
+- Formularios fake / datos fake estáticos (`static-json-data`, skill `create-static-json-module`)
 
 El skill `review-rules-skills` detalla el mapa completo. Síguelo al inicio de cada tarea.

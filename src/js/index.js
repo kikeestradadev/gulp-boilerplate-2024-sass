@@ -1,12 +1,12 @@
 import internalModule from './modules/internalModule';
 import styleGuideContainer from './modules/styleGuideContainer';
-import personaForm from './modules/personaForm';
+import personaGrid from './modules/personaGrid';
 import Prism from 'prismjs';
 
 const initComponents = () => {
 	internalModule();
 	styleGuideContainer();
-	personaForm();
+	personaGrid();
 	Prism.highlightAll();
 };
 

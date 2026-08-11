@@ -52,4 +52,4 @@ public/      build output
 - JS is bundled with esbuild (`scripts` task).
 - Sass uses `@import` (no `@use`); breakpoints live in `src/scss/core/_breakpoints.scss`.
 - Dev server is built-in: http://localhost:3000 with live reload.
-- **Fake backend forms** (style guide): Submit persists to `src/data/*.json` via local API routes in Gulp (`/api/...`). Works only with `npm run dev` — not on GitHub Pages. See `.cursor/rules/fake-backend-forms.mdc` and skill `create-fake-backend-form`.
+- **Static JSON demos:** seed in `src/data/*.json` → `public/data/` → `fetch`. Interactive forms append via `localStorage` so the grid updates on Submit in both `npm run dev` and GitHub Pages (per browser). See rule `static-json-data` and skill `create-static-json-module`.

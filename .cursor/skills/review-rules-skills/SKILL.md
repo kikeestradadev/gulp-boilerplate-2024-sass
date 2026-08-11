@@ -10,7 +10,7 @@ description: >-
 
 Antes de escribir o cambiar código en este proyecto, **para y revisa** las reglas del juego en `.cursor/`.
 
-No implementes “de memoria”. Omisiones tipicas: sintaxis Pug corta, shells sin `.main-container`/`.container`, datos inline en vez de JSON, `@use` en Sass, hover sin media query de pointer fino, reintroducir Tailwind, descargar JSON en vez de persistir con la API fake.
+No implementes “de memoria”. Omisiones tipicas: sintaxis Pug corta, shells sin `.main-container`/`.container`, datos inline en vez de JSON, `@use` en Sass, hover sin media query de pointer fino, reintroducir Tailwind, inventar API de escritura en Pages.
 
 ## Checklist (obligatorio)
 
@@ -31,7 +31,7 @@ No implementes “de memoria”. Omisiones tipicas: sintaxis Pug corta, shells s
 | Datos de componentes / sliders                     | `pug-data-files`, skill `create-slider-data`                    |
 | Sliders / Swiper                                   | `create-slider-data` + `javascript-modules`                     |
 | JS en `src/js`                                     | `javascript-modules`                                            |
-| Formulario fake / API local / simulación backend   | `fake-backend-forms`, skill `create-fake-backend-form`          |
+| Datos fake / grilla JSON / simulación (fetch)      | `static-json-data`, skill `create-static-json-module`           |
 
 Si la tarea cruza varias capas (p. ej. un slider nuevo), lee **todos** los items del mapa que apliquen antes del primer edit.
 

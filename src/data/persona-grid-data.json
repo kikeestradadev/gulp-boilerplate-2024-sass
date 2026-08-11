@@ -1,0 +1,78 @@
+{
+	"title": "Personas CRUD",
+	"lead": "Mantenimiento simulado (Create, Read, Update, Delete). Seed desde ./data/persona.json; cambios en localStorage. Funciona igual en npm run dev y GitHub Pages (por navegador).",
+	"dataUrl": "./data/persona.json",
+	"storageKey": "persona-grid-store-v2",
+	"formTitleCreate": "Crear persona",
+	"formTitleEdit": "Actualizar persona",
+	"submitLabelCreate": "Crear",
+	"submitLabelUpdate": "Actualizar",
+	"cancelLabel": "Cancelar",
+	"editLabel": "Editar",
+	"deleteLabel": "Eliminar",
+	"deleteConfirm": "¿Eliminar esta persona?",
+	"gridTitle": "Listado de personas",
+	"emptyList": "No hay personas. Crea una con el formulario o revisa el seed persona.json.",
+	"errorMessage": "No se pudo cargar el seed ./data/persona.json. Corre build/assets para copiar public/data.",
+	"loadingMessage": "Cargando personas…",
+	"createdMessage": "Persona creada.",
+	"updatedMessage": "Persona actualizada.",
+	"deletedMessage": "Persona eliminada.",
+	"previewTitle": "Estado actual (localStorage)",
+	"countLabel": "registros",
+	"fields": [
+		{
+			"name": "nombre",
+			"label": "Nombre",
+			"type": "text",
+			"placeholder": "Ana Perez",
+			"required": true
+		},
+		{
+			"name": "edad",
+			"label": "Edad",
+			"type": "number",
+			"placeholder": "28",
+			"required": true,
+			"min": 0,
+			"max": 120
+		},
+		{
+			"name": "telefono",
+			"label": "Telefono",
+			"type": "tel",
+			"placeholder": "+52 55 1234 5678",
+			"required": true
+		},
+		{
+			"name": "estatura",
+			"label": "Estatura (m)",
+			"type": "number",
+			"placeholder": "1.70",
+			"required": true,
+			"step": "0.01",
+			"min": 0
+		},
+		{
+			"name": "email",
+			"label": "Email",
+			"type": "email",
+			"placeholder": "ana@example.com",
+			"required": true
+		},
+		{
+			"name": "ciudad",
+			"label": "Ciudad",
+			"type": "text",
+			"placeholder": "Ciudad de Mexico",
+			"required": true
+		},
+		{
+			"name": "ocupacion",
+			"label": "Ocupacion",
+			"type": "text",
+			"placeholder": "Disenadora",
+			"required": true
+		}
+	]
+}
