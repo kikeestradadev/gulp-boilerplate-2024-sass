@@ -1,0 +1,10 @@
+{
+	"panelTitle": "Documentacion",
+	"items": [
+		{ "label": "Colores", "href": "#colores" },
+		{ "label": "Tipografia", "href": "#tipografia" },
+		{ "label": "Botones", "href": "#botones" },
+		{ "label": "JSON data", "href": "#json-data" },
+		{ "label": "Persona form", "href": "#persona-form" }
+	]
+}

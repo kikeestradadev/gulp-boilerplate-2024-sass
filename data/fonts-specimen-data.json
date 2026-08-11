@@ -1,0 +1,25 @@
+{
+	"title": "Tipografia",
+	"lead": "Escala y elementos de texto definidos en _fonts.scss.",
+	"pangram": "El veloz murcielago hindu comia feliz cardillo y kiwi.",
+	"paragraph": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi, dolorem autem maiores quis dolor, reprehenderit delectus quia dolore, incidunt obcaecati sequi labore hic? Soluta doloremque vitae explicabo assumenda fugit tenetur.",
+	"link": {
+		"label": "Enlace de ejemplo",
+		"href": "#"
+	},
+	"listItems": [
+		"Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+		"Quisquam quos reprehenderit delectus quia dolore.",
+		"Soluta doloremque vitae explicabo assumenda."
+	],
+	"table": {
+		"headers": ["Elemento", "Etiqueta", "Uso"],
+		"rows": [
+			["Titulo principal", "h1", "Hero / pagina"],
+			["Titulo de seccion", "h2", "Bloques"],
+			["Subtitulo", "h3", "Grupos"],
+			["Parrafo", "p", "Cuerpo"],
+			["Enlace", "a", "Navegacion / CTA"]
+		]
+	}
+}
