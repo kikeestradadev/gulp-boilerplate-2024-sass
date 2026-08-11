@@ -1,0 +1,32 @@
+div(class='style-guide-container main-container')
+	div(class='container style-guide-container__inner')
+		nav(class='style-guide-container__nav style-guide-container__nav--desktop', aria-label='Style guide')
+			ul(class='style-guide-container__nav-list')
+				each item in styleGuideContainerData.items
+					li(class='style-guide-container__nav-item')
+						a(class='style-guide-container__nav-link', href=item.href)= item.label
+
+		div(class='style-guide-container__content')
+			include color-table
+			include fonts-specimen
+			include buttons-links
+			include json-data
+
+	div(class='style-guide-container__mobile')
+		div(class='style-guide-container__panel', id='style-guide-panel', hidden)
+			p(class='style-guide-container__panel-title')= styleGuideContainerData.panelTitle
+			nav(class='style-guide-container__nav style-guide-container__nav--mobile', aria-label='Style guide mobile')
+				ul(class='style-guide-container__nav-list')
+					each item in styleGuideContainerData.items
+						li(class='style-guide-container__nav-item')
+							a(class='style-guide-container__nav-link', href=item.href)= item.label
+
+		button(
+			class='style-guide-container__fab',
+			type='button',
+			aria-expanded='false',
+			aria-controls='style-guide-panel',
+			aria-label='Abrir navegacion del style guide'
+		)
+			span(class='style-guide-container__fab-icon style-guide-container__fab-icon--open', aria-hidden='true') +
+			span(class='style-guide-container__fab-icon style-guide-container__fab-icon--close', aria-hidden='true') ×

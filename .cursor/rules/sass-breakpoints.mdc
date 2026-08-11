@@ -1,0 +1,26 @@
+---
+description: Usa breakpoints Sass globales mediante el entrypoint con @import
+globs: src/scss/**/*.scss
+alwaysApply: false
+---
+
+# Sass global con Gulp
+
+`src/scss/styles.scss` es el único entrypoint Sass. Gulp lo compila a `public/styles.css`.
+
+Debe importar primero:
+
+```scss
+@import "./core/breakpoints";
+```
+
+Después importa core, `modules/modules` y hacks. Los parciales registran dependencias con `@import`.
+
+## Reglas
+
+1. No uses `@use` ni `@forward`.
+2. No vuelvas a importar breakpoints dentro de cada parcial.
+3. Usa `$s`, `$sm`, `$m`, `$l`, `$lg`, `$xl`, `$xxl`, `$xxxl` y `$xxxxl` en media queries.
+4. Registra cada parcial de componente en `src/scss/modules/modules.scss`.
+5. Mantén los parciales con prefijo `_`; Gulp solo emite `public/styles.css`.
+6. No reintroduzcas Tailwind ni utilidades utility-first en markup.

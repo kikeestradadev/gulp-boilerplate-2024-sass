@@ -1,0 +1,50 @@
+.fonts-specimen {
+	width: 100%;
+	padding: 2.5rem 0;
+
+	&__block {
+		margin-bottom: 2.5rem;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	// Solo estructura visual del specimen; tipografia viene de _fonts.scss
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-bottom: 0.75rem;
+	}
+
+	p,
+	ul,
+	ol,
+	table {
+		margin: 0 0 1rem;
+	}
+
+	ul,
+	ol {
+		padding-left: 1.25rem;
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+
+		th,
+		td {
+			padding: 0.75rem;
+			border: 1px solid #e5e7eb;
+			text-align: left;
+		}
+
+		th {
+			background: #f9fafb;
+		}
+	}
+}

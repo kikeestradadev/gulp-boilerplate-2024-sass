@@ -1,0 +1,34 @@
+section(class='buttons-links', id='botones')
+	div(class='buttons-links__block')
+		h2= buttonsLinksData.title
+		p(class='buttons-links__lead')= buttonsLinksData.lead
+
+	div(class='buttons-links__block')
+		h3 Variantes
+		div(class='buttons-links__row')
+			each variant in buttonsLinksData.variants
+				div
+					p(class='buttons-links__label')= variant.name
+					a(class=`btn ${variant.modifier}`, href='#')= buttonsLinksData.label
+					p(class='buttons-links__meta')
+						span(class='buttons-links__swatch', style=`background-color: ${variant.hex}`)
+						|  #{variant.hex}
+
+	div(class='buttons-links__block')
+		h3 Tamanos
+		div(class='buttons-links__row')
+			each size in buttonsLinksData.sizes
+				div
+					p(class='buttons-links__label')= size.name
+					a(class=size.className, href='#')= buttonsLinksData.label
+					p(class='buttons-links__meta')= size.note
+
+	div(class='buttons-links__block')
+		h3 Enlaces
+		p
+			a(href=buttonsLinksData.link.href)= buttonsLinksData.link.label
+		p
+			| Lorem ipsum dolor sit amet,
+			| 
+			a(href=buttonsLinksData.link.href)= buttonsLinksData.link.label
+			|  consectetur adipisicing elit.

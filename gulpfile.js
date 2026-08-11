@@ -1,8 +1,13 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import pug from 'gulp-pug';
-import postcss from 'postcss';
 import data from 'gulp-data';
+import gulpSass from 'gulp-sass';
+import * as dartSass from 'sass';
+import gulpPostcss from 'gulp-postcss';
+import sourcemaps from 'gulp-sourcemaps';
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
 import fs from 'fs';
 import path from 'path';
 import http from 'node:http';
@@ -10,14 +15,13 @@ import { Transform } from 'node:stream';
 import { exec } from 'node:child_process';
 import * as esbuild from 'esbuild';
 import { minify as minifyHtml } from 'html-minifier-next';
-import tailwindcss from '@tailwindcss/postcss';
-import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
 
+const sass = gulpSass(dartSass);
 const isProd = process.env.NODE_ENV === 'production';
 const DEV_PORT = 3000;
 const PUBLIC_DIR = path.resolve('public');
 const PAGES_GLOB = './src/pug/pages/**/*.pug';
+const STYLE_GUIDE_PAGE = './src/pug/style-guide/style-guide.pug';
 
 const mimeTypes = {
 	'.html': 'text/html; charset=utf-8',
@@ -37,7 +41,6 @@ const mimeTypes = {
 };
 
 const liveClients = new Set();
-let pugSources = PAGES_GLOB;
 
 const LIVE_RELOAD_SNIPPET = `
 <script>
@@ -219,8 +222,8 @@ const pugLocals = () => ({
 	assetVersion: getAssetVersion(),
 });
 
-const pagePathFromFile = (filePath) => {
-	const relative = path.relative('src/pug/pages', filePath).replace(/\\/g, '/');
+const pagePathFromFile = (filePath, rootDir) => {
+	const relative = path.relative(rootDir, filePath).replace(/\\/g, '/');
 	if (!relative || relative.startsWith('..') || !relative.endsWith('.pug')) {
 		return null;
 	}
@@ -273,9 +276,9 @@ const htmlMinify = () =>
 		});
 	});
 
-const compilePug = () => {
+const compilePug = (sources, base) => {
 	return gulp
-		.src(pugSources, { allowEmpty: true, base: './src/pug/pages' })
+		.src(sources, { allowEmpty: true, base })
 		.pipe(plumber())
 		.pipe(data(pugLocals))
 		.pipe(
@@ -289,19 +292,15 @@ const compilePug = () => {
 		.pipe(gulp.dest('public'));
 };
 
-gulp.task('pug', () => {
-	pugSources = PAGES_GLOB;
-	return compilePug();
-});
+gulp.task('pug:pages', () => compilePug(PAGES_GLOB, './src/pug/pages'));
+gulp.task('pug:style-guide', () => compilePug(STYLE_GUIDE_PAGE, './src/pug/style-guide'));
+gulp.task('pug', gulp.parallel('pug:pages', 'pug:style-guide'));
 
-gulp.task('styles', async () => {
-	const inputPath = 'src/styles/styles.css';
-	const outputPath = 'public/styles.css';
-	const plugins = [tailwindcss, autoprefixer()];
+gulp.task('styles', () => {
+	const postcssPlugins = [autoprefixer()];
 
 	if (isProd) {
-		// Strip every comment in public CSS (licenses included). Author notes live only in src/.
-		plugins.push(
+		postcssPlugins.push(
 			cssnano({
 				preset: [
 					'default',
@@ -313,25 +312,27 @@ gulp.task('styles', async () => {
 		);
 	}
 
-	const css = fs.readFileSync(inputPath, 'utf8');
-	const result = await postcss(plugins).process(css, {
-		from: inputPath,
-		to: outputPath,
-		map: isProd ? false : { inline: false },
-	});
+	let stream = gulp.src('src/scss/styles.scss');
 
-	fs.mkdirSync('public', { recursive: true });
-	fs.writeFileSync(outputPath, result.css);
-
-	if (result.map) {
-		fs.writeFileSync(`${outputPath}.map`, result.map.toString());
-	} else {
-		try {
-			fs.unlinkSync(`${outputPath}.map`);
-		} catch {
-			// ignore missing maps
-		}
+	if (!isProd) {
+		stream = stream.pipe(sourcemaps.init());
 	}
+
+	stream = stream
+		.pipe(plumber())
+		.pipe(
+			sass({
+				outputStyle: isProd ? 'compressed' : 'expanded',
+				silenceDeprecations: ['import', 'global-builtin', 'color-functions'],
+			}).on('error', sass.logError)
+		)
+		.pipe(gulpPostcss(postcssPlugins));
+
+	if (!isProd) {
+		stream = stream.pipe(sourcemaps.write('.'));
+	}
+
+	return stream.pipe(gulp.dest('public'));
 });
 
 gulp.task('scripts', async () => {
@@ -384,27 +385,38 @@ gulp.task(
 	gulp.series('pug', 'styles', 'scripts', 'assets', (done) => {
 		startDevServer();
 
-		const onPageChange = debounce((filePath) => {
-			const pagePath = pagePathFromFile(filePath);
-			pugSources = filePath;
-			gulp.series(compilePug, 'styles', reloadPage(pagePath))();
+		const onPagesChange = debounce((filePath) => {
+			const pagePath = pagePathFromFile(filePath, 'src/pug/pages');
+			gulp.series(() => compilePug(filePath, './src/pug/pages'), reloadPage(pagePath))();
+		}, 120);
+
+		const onStyleGuidePageChange = debounce((filePath) => {
+			gulp.series(
+				() => compilePug(filePath, './src/pug/style-guide'),
+				reloadPage('/style-guide.html')
+			)();
 		}, 120);
 
 		const onSharedPugChange = debounce(() => {
-			pugSources = PAGES_GLOB;
-			gulp.series('pug', 'styles', reload)();
+			gulp.series('pug', reload)();
 		}, 120);
 
-		gulp.watch('src/pug/pages/**/*.pug').on('change', onPageChange);
-		gulp.watch(['src/pug/components/**/*.pug', 'src/pug/config/**/*.pug'], onSharedPugChange);
+		gulp.watch('src/pug/pages/**/*.pug').on('change', onPagesChange);
+		gulp.watch('src/pug/style-guide/style-guide.pug').on('change', onStyleGuidePageChange);
 		gulp.watch(
-			['src/styles/styles.css', 'tailwind.config.js'],
-			debounce(gulp.series('styles', reloadCss), 120)
+			[
+				'src/pug/style-guide/**/*.pug',
+				'!src/pug/style-guide/style-guide.pug',
+				'src/pug/components/**/*.pug',
+				'src/pug/config/**/*.pug',
+			],
+			onSharedPugChange
 		);
+		gulp.watch('src/scss/**/*.scss', debounce(gulp.series('styles', reloadCss), 120));
 		gulp.watch('src/js/**/*.js', debounce(gulp.series('scripts', reload), 120));
 		gulp.watch(
 			['src/data/**/*.json', 'src/md/**/*.md'],
-			debounce(gulp.series('pug', 'styles', reload), 120)
+			debounce(gulp.series('pug', reload), 120)
 		);
 		gulp.watch(
 			['src/assets/**/*', 'src/images/**/*'],

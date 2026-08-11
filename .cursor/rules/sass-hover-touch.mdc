@@ -1,0 +1,41 @@
+---
+description: Prohíbe :hover en dispositivos táctiles; solo aplicar hover con puntero fino
+globs: src/scss/**/*.scss
+alwaysApply: false
+---
+
+# Hover solo en desktop (pointer fino)
+
+En pantallas táctiles, `:hover` puede quedarse “pegado” y forzar un segundo toque. No escribas `:hover` suelto.
+
+## Correcto
+
+```scss
+.btn {
+	background: var(--btn-primary);
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			background: var(--btn-primary-hover);
+		}
+	}
+}
+```
+
+## Incorrecto
+
+```scss
+.btn {
+	&:hover {
+		background: var(--btn-primary-hover);
+	}
+}
+```
+
+## Reglas
+
+1. Todo estilo de hover va dentro de `@media (hover: hover) and (pointer: fine)`.
+2. Aplica a botones, enlaces, nav, FAB y cualquier control interactivo.
+3. Usa `:focus-visible` para feedback de teclado; no dependas del hover en touch.
+4. En el style guide no muestres demos estáticas de hover; el usuario lo prueba al pasar el cursor.
+5. No uses clases tipo `.btn--hover` para simular hover en mobile.

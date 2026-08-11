@@ -1,0 +1,10 @@
+{
+	"home": {
+		"href": "./style-guide.html",
+		"label": "Style Guide"
+	},
+	"style-guide": {
+		"href": "./index.html",
+		"label": "Home"
+	}
+}

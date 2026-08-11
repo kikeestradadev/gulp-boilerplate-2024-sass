@@ -1,0 +1,89 @@
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	border: 2px solid transparent;
+	border-radius: 0;
+	font-family: inherit;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	line-height: 1.2;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+
+	// Size: normal (default) — mobile first
+	font-size: 0.875rem;
+	padding: 0.875rem 1.25rem;
+
+	@media (width >= $l) {
+		font-size: 1rem;
+		padding: 1rem 1.5rem;
+	}
+
+	&--large {
+		font-size: 1rem;
+		padding: 1rem 1.25rem;
+
+		@media (width >= $l) {
+			font-size: 1.25rem;
+			padding: 1.5rem;
+		}
+	}
+
+	&--small {
+		font-size: 0.75rem;
+		padding: 0.75rem 1rem;
+
+		@media (width >= $l) {
+			font-size: 0.75rem;
+			padding: 0.75rem 1rem;
+		}
+	}
+
+	&--primary {
+		background: var(--btn-primary);
+		border-color: var(--btn-primary);
+		color: var(--btn-text);
+	}
+
+	&--secondary {
+		background: var(--btn-secondary);
+		border-color: var(--btn-secondary);
+		color: var(--btn-text);
+	}
+
+	&--outline {
+		background: transparent;
+		border-color: var(--btn-secondary);
+		color: var(--btn-secondary);
+	}
+
+	// Hover solo en puntero fino (desktop); evita sticky hover / doble tap en touch
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			text-decoration: none;
+		}
+
+		&--primary:hover {
+			background: var(--btn-primary-hover);
+			border-color: var(--btn-primary-hover);
+			color: var(--btn-text);
+		}
+
+		&--secondary:hover {
+			background: var(--btn-secondary-hover);
+			border-color: var(--btn-secondary-hover);
+			color: var(--btn-text);
+		}
+
+		&--outline:hover {
+			border-color: var(--btn-secondary-hover);
+			color: var(--btn-secondary-hover);
+			background: transparent;
+		}
+	}
+}

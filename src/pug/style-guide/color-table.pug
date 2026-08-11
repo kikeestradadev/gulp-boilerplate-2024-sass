@@ -1,0 +1,9 @@
+section(class='color-table', id='colores')
+	h2(class='color-table__title')= colorTableData.title
+	div(class='color-table__grid')
+		each color in colorTableData.items
+			article(class='color-table__card')
+				div(class='color-table__swatch', style=`background-color: ${color.hex}`)
+				div(class='color-table__body')
+					h3(class='color-table__name')= color.name
+					p(class='color-table__hex')= color.hex

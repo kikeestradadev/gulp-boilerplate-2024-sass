@@ -1,0 +1,17 @@
+section(class='json-data', id='json-data')
+	h2(class='json-data__title') Datos desde JSON
+	p(class='json-data__lead') Demo de locales inyectados por Gulp desde src/data (slider.json + example.json).
+
+	div(class='json-data__grid')
+		each item in slider1
+			article(class='json-data__card')
+				img(class='json-data__image', src=item.img, alt=item.title)
+				p(class='json-data__caption')= item.title
+
+	div(class='json-data__grid')
+		each item in example2
+			article(class='json-data__card')
+				img(class='json-data__image', src=item.img, alt=item.title)
+				p(class='json-data__caption')= item.title
+				p(class='json-data__meta')= item.category.cat1
+				p(class='json-data__meta')= item.category.cat2

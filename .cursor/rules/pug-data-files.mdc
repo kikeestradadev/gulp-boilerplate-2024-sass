@@ -8,40 +8,42 @@ alwaysApply: false
 
 Gulp inyecta todos los JSON de `src/data/` como locales de Pug (ver `gulpfile.js` → `getJsonData` / `pugLocals`).
 
+A diferencia del boilerplate Prepros (objetos inline en el `.pug`), **aquí los datos van en JSON**.
+
 ## Convención de pareja Pug + data
 
 Si un componente necesita recorrer un objeto o array, **no** declare datos inline en el `.pug`.
 
 | Pieza | Ubicación | Ejemplo |
 |-------|-----------|---------|
-| Markup | `src/pug/components/{name}.pug` | `main-slider.pug` |
-| Datos | `src/data/{name}-data.json` | `main-slider-data.json` |
-| Local Pug | camelCase del basename del JSON | `mainSliderData` |
+| Markup | `src/pug/components/{name}.pug` (UI) o `src/pug/style-guide/{name}.pug` (specimens) | `color-table.pug` |
+| Datos | `src/data/{name}-data.json` | `color-table-data.json` |
+| Local Pug | camelCase del basename del JSON | `colorTableData` |
+| Estilos | `src/scss/modules/_{name}.scss` | `_color-table.scss` |
 
-El archivo `{name}-data.json` es **el objeto** a recorrer (no lo envuelvas en una clave extra). Gulp lo expone como `mainSliderData` a partir del nombre del archivo.
+El archivo `{name}-data.json` es **el objeto** a recorrer (no lo envuelvas en una clave extra). Gulp lo expone como `colorTableData` a partir del nombre del archivo.
 
 ## Ejemplo
 
-`src/data/main-slider-data.json`:
+`src/data/color-table-data.json`:
 
 ```json
 {
-	"title": "Aliados",
+	"title": "Paleta de colores",
 	"items": [
-		{ "name": "Aliado 1", "image": "./assets/aliado.svg", "href": "#" }
+		{ "name": "Amarillo", "hex": "var(--color-yellow)" }
 	]
 }
 ```
 
-`src/pug/components/main-slider.pug`:
+`src/pug/style-guide/color-table.pug`:
 
 ```pug
-section(class='main-slider w-full max-w-[var(--main-container)] mx-auto px-[15px]')
-	div(class='w-full max-w-[var(--container)] mx-auto')
-		h2(class='text-[length:var(--h2-size)] font-bold mb-6')= mainSliderData.title
-		each item in mainSliderData.items
-			article
-				img(src=item.image alt=item.name)
+section(class='color-table' id='colores')
+	h2(class='color-table__title')= colorTableData.title
+	each color in colorTableData.items
+		article(class='color-table__card')
+			h3(class='color-table__name')= color.name
 ```
 
 JSON legados sin sufijo `-data` (p. ej. `slider.json`, `example.json`) siguen fusionando sus claves de primer nivel como locales (compatible con demos existentes).
@@ -49,10 +51,10 @@ JSON legados sin sufijo `-data` (p. ej. `slider.json`, `example.json`) siguen fu
 ## Reglas
 
 1. Contenedor de datos: **`src/data/`**, no `src/pug/data/`.
-2. Nombre: mismo base kebab del Pug + `-data.json` (`main-slider.pug` → `main-slider-data.json`).
+2. Nombre: mismo base kebab del Pug + `-data.json` (`color-table.pug` → `color-table-data.json`).
 3. El `.pug` solo genera HTML; el contenido editable / listados van en el JSON.
 4. No declares objetos grandes con `- const foo = { ... }` al inicio del componente.
 5. No crees `*-data.pug`.
-6. Módulos UI en `src/pug/components/`; páginas en `src/pug/pages/`.
+6. Módulos UI en `src/pug/components/`; specimens y página del storybook en `src/pug/style-guide/`; páginas de sitio en `src/pug/pages/`.
 7. Sliders: ver skill `create-slider-data`.
 8. `assetVersion` lo inyecta Gulp desde `package.json` (skill `bump-assets`).

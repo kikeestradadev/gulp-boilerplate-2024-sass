@@ -1,0 +1,31 @@
+{
+	"title": "Botones y enlaces",
+	"lead": "Variantes y tamanos. El hover se prueba al pasar el cursor (solo desktop). Estilos en _buttons.scss y _fonts.scss.",
+	"variants": [
+		{
+			"name": "Primary",
+			"modifier": "btn--primary",
+			"hex": "var(--btn-primary)"
+		},
+		{
+			"name": "Secondary",
+			"modifier": "btn--secondary",
+			"hex": "var(--btn-secondary)"
+		},
+		{
+			"name": "Outline",
+			"modifier": "btn--outline",
+			"hex": "var(--btn-secondary)"
+		}
+	],
+	"sizes": [
+		{ "name": "Large", "className": "btn btn--primary btn--large", "note": "Desktop: 20px / 1.5rem" },
+		{ "name": "Normal", "className": "btn btn--primary", "note": "Desktop: 16px / 1rem 1.5rem" },
+		{ "name": "Small", "className": "btn btn--primary btn--small", "note": "Desktop: 12px / 0.75rem 1rem" }
+	],
+	"label": "Subscribe",
+	"link": {
+		"label": "Example of Link",
+		"href": "#"
+	}
+}

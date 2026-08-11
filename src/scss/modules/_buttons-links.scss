@@ -1,0 +1,49 @@
+.buttons-links {
+	width: 100%;
+	padding: 2.5rem 0;
+
+	&__block {
+		margin-bottom: 2.5rem;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__lead {
+		margin: 0 0 1.5rem;
+		color: #6b7280;
+	}
+
+	&__row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+	}
+
+	&__label {
+		margin: 0 0 0.5rem;
+		font-size: 0.8125rem;
+		font-weight: 600;
+		color: #6b7280;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+	}
+
+	&__meta {
+		margin: 0.35rem 0 0;
+		font-size: 0.8125rem;
+		color: #6b7280;
+	}
+
+	&__swatch {
+		display: inline-block;
+		width: 0.75rem;
+		height: 0.75rem;
+		margin-right: 0.35rem;
+		vertical-align: middle;
+		border-radius: 2px;
+	}
+}

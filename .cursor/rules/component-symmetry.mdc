@@ -1,0 +1,41 @@
+---
+description: Naming obligatorio para componentes Pug, SCSS y JS con el mismo nombre base
+globs: src/pug/components/**/*.pug,src/pug/style-guide/**/*.pug,src/scss/modules/**/*.scss,src/js/modules/**/*.js
+alwaysApply: false
+---
+
+# Simetría de componentes
+
+Las capas de un componente comparten nombre base:
+
+```text
+main-menu.pug
+_main-menu.scss
+mainMenu.js
+```
+
+| Capa | Ruta | Convención |
+|------|------|------------|
+| Markup UI | `src/pug/components/kebab-case.pug` | kebab-case |
+| Markup style guide | `src/pug/style-guide/kebab-case.pug` | kebab-case (specimens) |
+| Estilos | `src/scss/modules/_kebab-case.scss` | `_` + kebab-case |
+| Script (opcional) | `src/js/modules/camelCase.js` | camelCase |
+| Datos | `src/data/kebab-case-data.json` | kebab + `-data.json` |
+| Bloque BEM | `.kebab-case` | igual al Pug |
+
+Los specimens del style guide y su página (`style-guide.pug`) viven en `src/pug/style-guide/`, separados de los módulos UI en `components/`.
+
+## Registro
+
+1. Registra el parcial en `src/scss/modules/modules.scss` con `@import "main-menu";`.
+2. Importa el módulo JS desde `src/js/index.js` y ejecútalo en `initComponents`.
+3. Datos dinámicos en `src/data/*-data.json` (rule `pug-data-files`); Gulp los inyecta como locales camelCase.
+
+## Reglas
+
+- Usa clases BEM: `.block`, `.block__element`, `.block--modifier`.
+- Un parcial SCSS declara un bloque principal.
+- Cada módulo de página usa el shell `.main-container` > `.container` (ver rule `bem-module-layout`).
+- Los breakpoints son globales porque `styles.scss` importa `core/breakpoints` primero.
+- No añadas `@use`; este proyecto usa exclusivamente `@import`.
+- No uses Tailwind ni utilidades utility-first.

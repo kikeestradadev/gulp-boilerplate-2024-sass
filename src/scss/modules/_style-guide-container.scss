@@ -1,0 +1,221 @@
+.style-guide-container {
+	&__inner {
+		display: grid;
+		gap: 2rem;
+		padding: 2rem 0 4rem;
+
+		@media (width >= $l) {
+			grid-template-columns: 14rem minmax(0, 1fr);
+			gap: 3rem;
+			align-items: start;
+		}
+	}
+
+	&__nav--desktop {
+		display: none;
+
+		@media (width >= $l) {
+			display: block;
+			position: sticky;
+			top: calc(var(--header-height) + 1rem);
+			background: #f3f4f6;
+			border-radius: 8px;
+			padding: 0.75rem;
+		}
+	}
+
+	&__nav-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	&__nav-item {
+		margin: 0;
+	}
+
+	&__nav-link {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+		padding: 0.65rem 0.85rem;
+		border-radius: 6px;
+		color: var(--header-color);
+		font-size: 0.9375rem;
+		font-weight: 500;
+		text-decoration: none;
+		transition: background-color 0.2s ease, color 0.2s ease;
+
+		&::after {
+			content: '';
+			flex-shrink: 0;
+			width: 0.4rem;
+			height: 0.4rem;
+			border-right: 2px solid transparent;
+			border-bottom: 2px solid transparent;
+			transform: rotate(-45deg);
+			opacity: 0;
+			transition: opacity 0.2s ease, border-color 0.2s ease;
+		}
+
+		@media (hover: hover) and (pointer: fine) {
+			&:hover {
+				background: rgba(0, 0, 0, 0.04);
+				text-decoration: none;
+			}
+		}
+
+		&.is-active {
+			color: var(--header-bg);
+			font-weight: 700;
+
+			&::after {
+				border-color: currentColor;
+				opacity: 1;
+			}
+		}
+	}
+
+	&__nav--mobile {
+		.style-guide-container__nav-list {
+			max-height: min(55vh, 26rem);
+			overflow-y: auto;
+			-webkit-overflow-scrolling: touch;
+			padding-right: 0.25rem;
+		}
+
+		.style-guide-container__nav-link {
+			color: #e5e7eb;
+			border-radius: 0;
+			padding: 0.85rem 0.25rem;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+			@media (hover: hover) and (pointer: fine) {
+				&:hover {
+					background: transparent;
+					color: #fff;
+				}
+			}
+
+			&.is-active {
+				color: #ff4d4f;
+
+				&::after {
+					border-color: currentColor;
+				}
+			}
+		}
+	}
+
+	&__content {
+		min-width: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+
+		> section {
+			scroll-margin-top: calc(var(--header-height) + 1rem);
+		}
+	}
+
+	&__mobile {
+		@media (width >= $l) {
+			display: none;
+		}
+	}
+
+	&__panel {
+		position: fixed;
+		right: 1rem;
+		bottom: 5.5rem;
+		z-index: 120;
+		display: flex;
+		flex-direction: column;
+		width: min(20rem, calc(100vw - 2rem));
+		max-height: min(70vh, 32rem);
+		padding: 1rem 1.1rem 1.1rem;
+		border-radius: 12px;
+		background: #2d3e4f;
+		box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+		overflow: hidden;
+
+		&[hidden] {
+			display: none;
+		}
+	}
+
+	&__panel-title {
+		margin: 0 0 0.75rem;
+		color: #c5cdd6;
+		font-size: 0.9375rem;
+		font-weight: 600;
+	}
+
+	&__fab {
+		position: fixed;
+		right: 1rem;
+		bottom: 1rem;
+		z-index: 130;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 3.5rem;
+		height: 3.5rem;
+		padding: 0;
+		border: 0;
+		border-radius: 999px;
+		background: #00cbff;
+		color: #fff;
+		box-shadow: 0 8px 24px rgba(0, 123, 223, 0.35);
+		cursor: pointer;
+		transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+
+		@media (hover: hover) and (pointer: fine) {
+			&:hover {
+				background: #00b6e6;
+				transform: translateY(-2px);
+			}
+		}
+
+		&:focus-visible {
+			outline: 3px solid #007bdf;
+			outline-offset: 3px;
+		}
+	}
+
+	&__fab-icon {
+		position: absolute;
+		font-size: 1.75rem;
+		line-height: 1;
+		font-weight: 400;
+
+		&--close {
+			display: none;
+			font-size: 2rem;
+		}
+	}
+
+	&.is-nav-open {
+		.style-guide-container__fab-icon--open {
+			display: none;
+		}
+
+		.style-guide-container__fab-icon--close {
+			display: block;
+		}
+	}
+}
+
+// En style-guide el shell lo aporta style-guide-container (.main-container > .container)
+body.style-guide {
+	// Evita choque con el FAB del storybook en mobile
+	.floating-button {
+		@media (width < $l) {
+			display: none;
+		}
+	}
+}

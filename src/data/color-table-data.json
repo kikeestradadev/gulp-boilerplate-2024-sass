@@ -1,0 +1,15 @@
+{
+	"title": "Paleta de colores",
+	"items": [
+		{ "name": "Amarillo", "hex": "var(--color-yellow)" },
+		{ "name": "Naranja claro", "hex": "var(--color-orange)" },
+		{ "name": "Naranja", "hex": "var(--color-orange-light)" },
+		{ "name": "Magenta", "hex": "var(--color-magenta)" },
+		{ "name": "Verde", "hex": "var(--color-green)" },
+		{ "name": "Verde oscuro", "hex": "var(--color-green-dark)" },
+		{ "name": "Verde profundo", "hex": "var(--color-green-deep)" },
+		{ "name": "Azul", "hex": "var(--color-blue)" },
+		{ "name": "Morado", "hex": "var(--color-purple)" },
+		{ "name": "Fucsia", "hex": "var(--color-fuchsia)" }
+	]
+}

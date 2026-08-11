@@ -19,11 +19,10 @@ La data dinámica **no** va inline en el Pug: vive en `src/data/` (ver rule `pug
 | Pug | `{name}-slider.pug` | `src/pug/components/main-slider.pug` |
 | Datos JSON | `{name}-slider-data.json` | `src/data/main-slider-data.json` |
 | Local Pug | camelCase del basename JSON | `mainSliderData` |
+| SCSS | `_{name}-slider.scss` | `src/scss/modules/_main-slider.scss` |
 | Raíz DOM | `.{name}-slider` | `.main-slider` |
 | JS | `{name}Slider.js` | `src/js/modules/mainSlider.js` |
 | Const JS | `{name}Slider` | `const mainSlider` |
-
-Ejemplo de nombre: `main-slider.pug` + `main-slider-data.json` → local `mainSliderData`.
 
 ## Archivo de datos
 
@@ -41,21 +40,26 @@ Ejemplo de nombre: `main-slider.pug` + `main-slider-data.json` → local `mainSl
 
 ## Markup Pug
 
-Solo markup. Shell de layout (`layout-containers`) y sintaxis larga (`pug-long-syntax`). Recorre el local inyectado por Gulp.
+Solo markup. Shell BEM (`bem-module-layout`) y sintaxis larga (`pug-long-syntax`).
 
 ```pug
-section(class='main-slider w-full max-w-[var(--main-container)] mx-auto px-[15px]')
-	div(class='w-full max-w-[var(--container)] mx-auto')
-		h2(class='text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold mb-6')= mainSliderData.title
-		div(class='swiper')
-			div(class='swiper-wrapper')
-				each slide in mainSliderData.items
-					article(class='swiper-slide')
-						img(src=slide.image alt=slide.name)
-			div(class='swiper-pagination')
-			div(class='swiper-button-prev')
-			div(class='swiper-button-next')
+section(class='main-slider')
+	div(class='main-container main-slider__shell')
+		div(class='container main-slider__container')
+			h2(class='main-slider__title')= mainSliderData.title
+			div(class='swiper')
+				div(class='swiper-wrapper')
+					each slide in mainSliderData.items
+						article(class='swiper-slide')
+							img(src=slide.image alt=slide.name)
+				div(class='swiper-pagination')
+				div(class='swiper-button-prev')
+				div(class='swiper-button-next')
 ```
+
+## SCSS
+
+Crea `src/scss/modules/_main-slider.scss` y regístralo en `modules.scss` con `@import "main-slider";`.
 
 ## Módulo JS
 
@@ -93,10 +97,9 @@ Regístralo en `src/js/index.js` dentro de `initComponents`.
 
 ## Reglas
 
-1. Crea **siempre** la pareja: `components/{name}-slider.pug` + `data/{name}-slider-data.json`.
-2. El JSON es el objeto a recorrer (títulos, items, imágenes, enlaces); el Pug no declara ese objeto.
-3. No uses datos inline (`- const foo = { ... }`) ni `src/pug/data/` ni `*-data.pug`.
-4. Mantén controles estructurales de Swiper (`.swiper`, `.swiper-wrapper`, `.swiper-slide`, pagination/nav) en el markup.
+1. Crea **siempre** la pareja: `components/{name}-slider.pug` + `data/{name}-slider-data.json` + `_…scss`.
+2. El JSON es el objeto a recorrer; el Pug no declara ese objeto.
+3. No uses datos inline ni `src/pug/data/` ni `*-data.pug`.
+4. Mantén controles estructurales de Swiper en el markup.
 5. Conserva la clase raíz `.{name}-slider` que espera el módulo JS.
 6. Incluye el Pug desde la página: `include ../components/{name}-slider`.
-7. Tipografía y tokens con variables `:root` (`css-root-variables`); layout con `layout-containers`.

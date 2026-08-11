@@ -1,0 +1,60 @@
+section(class='fonts-specimen', id='tipografia')
+	div(class='fonts-specimen__block')
+		h2= fontsSpecimenData.title
+		p= fontsSpecimenData.lead
+
+	div(class='fonts-specimen__block')
+		h3 Specimen
+		p
+			| ABCDEFGHIJKLMNOPQRSTUVWXYZ
+			br
+			| abcdefghijklmnopqrstuvwxyz
+			br
+			| 0123456789 !@#$%&*()
+		p= fontsSpecimenData.pangram
+
+	div(class='fonts-specimen__block')
+		h3 Headlines
+		h1 h1 — Heading 1
+		h2 h2 — Heading 2
+		h3 h3 — Heading 3
+		h4 h4 — Heading 4
+		h5 h5 — Heading 5
+		h6 h6 — Heading 6
+
+	div(class='fonts-specimen__block')
+		h3 Parrafos
+		p= fontsSpecimenData.paragraph
+		p
+			| Texto con
+			| 
+			strong negrita
+			| ,
+			| 
+			em cursiva
+			|  y un
+			| 
+			a(href=fontsSpecimenData.link.href)= fontsSpecimenData.link.label
+			| .
+
+	div(class='fonts-specimen__block')
+		h3 Listas
+		ul
+			each item in fontsSpecimenData.listItems
+				li= item
+		ol
+			each item in fontsSpecimenData.listItems
+				li= item
+
+	div(class='fonts-specimen__block')
+		h3 Tabla
+		table
+			thead
+				tr
+					each header in fontsSpecimenData.table.headers
+						th= header
+			tbody
+				each row in fontsSpecimenData.table.rows
+					tr
+						each cell in row
+							td= cell

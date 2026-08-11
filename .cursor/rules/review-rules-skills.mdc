@@ -1,5 +1,5 @@
 ---
-description: Antes de cualquier cambio, revisar .cursor/rules y .cursor/skills relevantes
+description: Obligatorio al inicio de cualquier tarea: leer rules y skills relevantes antes de editar
 alwaysApply: true
 ---
 
@@ -13,9 +13,10 @@ Antes de implementar, refactorizar o crear archivos en este repo:
 
 No omitas convenciones del proyecto por asumirlas. En especial:
 
-- Tailwind 4 only (`tailwind-v4-only`)
-- Tokens `:root` en markup (`css-root-variables`)
-- Layout `--main-container` / `--container` (`layout-containers`)
+- Sass + `@import` (`sass-breakpoints`) — **no Tailwind**
+- Hover solo con puntero fino (`sass-hover-touch`)
+- Layout `.main-container` / `.container` (`bem-module-layout`, `layout-containers`)
+- Simetría Pug/SCSS/JS (`component-symmetry`)
 - Pug sintaxis larga + datos en `src/data/*-data.json` (`pug-long-syntax`, `pug-data-files`)
 - Módulos JS camelCase + Swiper CDN (`javascript-modules`, skill `create-slider-data`)
 

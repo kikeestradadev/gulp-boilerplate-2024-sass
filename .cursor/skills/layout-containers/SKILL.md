@@ -1,63 +1,36 @@
 ---
 name: layout-containers
 description: >-
-  Enforce module shell: section with Main Container (--main-container) then
-  Container (--container). Outer uses w-full, max-w-[var(--main-container)],
-  mx-auto, px-[15px] only. Inner has no side padding. Vertical rhythm comes from
-  main: gap + py with --section-gap — never py/pt/pb on section shells. Use when
-  creating or editing Pug/HTML modules, sections, or storybook components.
+  Enforce module shell: BEM root + .main-container + .container. Outer uses
+  global layout classes from _layout.scss. Use when creating or editing Pug/HTML
+  modules, sections, or storybook components.
 ---
 
-# Layout Containers
+# Contenedores de módulo (BEM + Sass)
 
-## Tokens (`src/styles/styles.css` `:root`)
+Cada módulo usa el shell global de `src/scss/core/_layout.scss` (sin utilidades Tailwind).
 
-- `--main-container: 3500px` — outer `section`
-- `--container: 1600px` — inner content wrapper
-- `--section-gap: 2.5rem` (desktop `4rem`) — space **between** sections and vertical padding **of** `main`
-
-## Module shell (required)
+## Shell obligatorio
 
 ```pug
-section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px]")
-	div(class="w-full max-w-[var(--container)] mx-auto")
-		//- module content
+section(class='example-module')
+	div(class='main-container example-module__shell')
+		div(class='container example-module__container')
+			//- contenido
 ```
 
-| Layer | Classes |
-|-------|---------|
-| `section` | `w-full max-w-[var(--main-container)] mx-auto px-[15px]` |
-| inner `div` | `w-full max-w-[var(--container)] mx-auto` (no `px-[15px]`) |
+| Capa | Clase | Rol |
+|------|-------|-----|
+| Outer | `.main-container` | max-width `var(--main-container)`, `padding: 0 15px` |
+| Inner | `.container` | max-width `var(--container)`, sin padding lateral |
 
-## Vertical spacing (`main` owns it)
+## Excepción style-guide
 
-En `template.pug`, `main` aplica **gap** (entre sections) y **py** (antes del primer módulo y después del último):
+Si el módulo ya vive dentro de `.style-guide-container` (que aporta el shell), no dupliques otro `main-container`.
 
-```pug
-main(
-	class='flex w-full flex-1 flex-col max-w-[var(--main-container)] gap-[var(--section-gap)] py-[var(--section-gap)]'
-)
-```
+## Reglas
 
-| Clase en `main` | Para qué |
-|-----------------|----------|
-| `gap-[var(--section-gap)]` | Distancia entre sections hijas |
-| `py-[var(--section-gap)]` | Distancia superior/inferior del bloque de contenido |
-
-Do **not** add `py-*`, `pt-*`, or `pb-*` on module `section` shells.
-
-## Never
-
-- `max-w-[3500px]` / `max-w-[1600px]`
-- `px-[15px]` on the inner container
-- `py-*` on the outer `section`
-- `main` sin `gap` o sin `py` con el token
-- Outer shell that is not a `section` for page modules
-
-## Checklist
-
-1. Root tag is `section`.
-2. Outer: main-container token + lateral `px-[15px]` only.
-3. Inner: container token, no side padding.
-4. No vertical padding on the section; rely on `main` (`gap` + `py` + `--section-gap`).
-5. Tokens live in `:root`; tune spacing by editing `--section-gap`.
+1. La raíz del módulo es el bloque BEM (`section(class='…')`).
+2. No uses `w-full`, `max-w-[…]`, `mx-auto`, `px-[15px]` ni otras utilidades.
+3. Para cambiar anchos, edita tokens en `:root` (`_layout.scss`), no el markup.
+4. Header/footer del layout usan clases `.main-header` / `.main-footer`.

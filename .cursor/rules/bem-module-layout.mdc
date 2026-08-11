@@ -1,0 +1,46 @@
+---
+description: Cada módulo BEM usa main-container y container como shell de layout
+globs: src/pug/**/*.pug,src/scss/**/*.scss
+alwaysApply: false
+---
+
+# Layout de módulos BEM
+
+Sin frameworks CSS. Cada módulo usa el shell global de layout definido en `src/scss/core/_layout.scss`.
+
+## Clases globales
+
+```scss
+.main-container {
+	width: 100%;
+	max-width: var(--main-container);
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+.container {
+	width: 100%;
+	max-width: var(--container);
+	margin: 0 auto;
+	padding: 0;
+}
+```
+
+## Markup obligatorio
+
+```pug
+section(class='main-menu')
+	div(class='main-container main-menu__shell')
+		div(class='container main-menu__container')
+			//- contenido del módulo
+```
+
+## Reglas
+
+1. El bloque BEM es la raíz del módulo (`.main-menu`, `.color-table`, etc.).
+2. Dentro va siempre `.main-container` y luego `.container`.
+3. Puedes combinar con elementos BEM (`main-menu__shell`, `main-menu__container`) sin redefinir width/max-width/padding del shell.
+4. No inventes otros max-width de layout en el parcial SCSS del módulo.
+5. No uses frameworks (Bootstrap, Tailwind, etc.) para este grid de página.
+6. Si el módulo ya vive dentro de un layout que aporta el shell (p. ej. contenido interno del style-guide), no dupliques otro `main-container`; el layout padre es el responsable.
+7. Tokens de ancho viven en `:root` (`_layout.scss`); no hardcodees `3000px` / `1600px` en el markup.

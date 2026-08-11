@@ -1,11 +1,11 @@
 {
-	"name": "gulp-boilerplate-2024",
+	"name": "gulp-boilerplate-2024-sass",
 	"version": "1.0.0",
 	"assetVersion": "1.0.14",
-	"description": "Simple scaffolding for static web projects with Gulp + Tailwind CSS 4",
+	"description": "Simple scaffolding for static web projects with Gulp + Sass",
 	"type": "module",
 	"main": "gulpfile.js",
-	"homepage": "https://kikeestradadev.github.io/gulp-boilerplate-2024-tailwind-4/",
+	"homepage": "https://kikeestradadev.github.io/gulp-boilerplate-2024-sass/",
 	"engines": {
 		"node": ">=22.13.1"
 	},
@@ -25,23 +25,30 @@
 	},
 	"devDependencies": {
 		"@prettier/plugin-pug": "^3.4.2",
-		"@tailwindcss/postcss": "^4.1.11",
 		"autoprefixer": "^10.4.20",
 		"cssnano": "^7.0.6",
 		"esbuild": "^0.28.0",
 		"gulp": "^5.0.0",
 		"gulp-data": "^1.3.1",
 		"gulp-plumber": "^1.2.1",
+		"gulp-postcss": "^10.0.0",
 		"gulp-pug": "^5.0.0",
+		"gulp-sass": "^6.0.0",
+		"gulp-sourcemaps": "^3.0.0",
 		"html-minifier-next": "^7.5.2",
 		"jstransformer-markdown-it": "^3.0.0",
 		"postcss": "^8.5.25",
 		"prettier": "^3.5.3",
-		"prettier-plugin-tailwindcss": "^0.6.11",
-		"tailwindcss": "^4.0.14"
+		"sass": "^1.85.0"
 	},
 	"overrides": {
 		"markdown-it": "^15.0.0",
 		"linkify-it": "^6.1.0"
+	},
+	"allowScripts": {
+		"esbuild@0.28.1": true,
+		"@parcel/watcher@2.6.0": true,
+		"fsevents@2.3.3": true,
+		"es5-ext@0.10.64": true
 	}
 }
