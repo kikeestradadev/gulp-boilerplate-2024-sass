@@ -1,0 +1,90 @@
+-
+	const styleGuideContainerData = {
+		panelTitle: 'Documentacion',
+		items: [
+			{ label: 'Colores', href: '#colores' },
+			{ label: 'Tipografia', href: '#tipografia' },
+			{ label: 'Botones', href: '#botones' },
+			{ label: 'Editor CSS', href: '#editor-css' },
+			{ label: 'Flex', href: '#flex' },
+			{ label: 'Grid', href: '#grid' },
+			{ label: 'JSON', href: '#json-data' },
+			{ label: 'Listas', href: '#listas' },
+			{ label: 'Markdown', href: '#markdown' },
+			{ label: 'Sidebar', href: '#sidebar' },
+			{ label: 'Sprite SVG', href: '#sprite-svg' },
+			{ label: 'Tabla', href: '#tabla' },
+			{ label: 'Texto', href: '#texto' },
+		],
+	}
+
+mixin styleGuideNavLink(item, variant)
+	- const baseClass = 'style-guide-container__nav-link group flex items-center justify-between gap-3 no-underline transition-[background-color,color] duration-200';
+	- const desktopClass = 'rounded-md px-[0.85rem] py-[0.65rem] text-[0.9375rem] font-medium text-[var(--paragraph-color)] [@media(hover:hover)_and_(pointer:fine)]:hover:bg-black/5 [@media(hover:hover)_and_(pointer:fine)]:hover:no-underline [&.is-active]:font-bold [&.is-active]:text-[var(--first-color)]';
+	- const mobileClass = 'rounded-none border-b border-white/10 px-1 py-[0.85rem] text-[0.9375rem] font-medium text-gray-200 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-transparent [@media(hover:hover)_and_(pointer:fine)]:hover:text-white [@media(hover:hover)_and_(pointer:fine)]:hover:no-underline [&.is-active]:font-bold [&.is-active]:text-[var(--third-color)]';
+	- const chevronDesktop = 'size-[0.4rem] shrink-0 rotate-[-45deg] border-r-2 border-b-2 border-transparent opacity-0 transition group-[.is-active]:border-current group-[.is-active]:opacity-100';
+	- const chevronMobile = 'size-[0.4rem] shrink-0 rotate-[-45deg] border-r-2 border-b-2 border-transparent opacity-0 transition group-[.is-active]:border-current group-[.is-active]:opacity-100';
+	a(class=`${baseClass} ${variant === 'mobile' ? mobileClass : desktopClass}`, href=item.href)
+		= item.label
+		span(class=variant === 'mobile' ? chevronMobile : chevronDesktop, aria-hidden='true')
+
+section.style-guide-container.group.mx-auto.w-full(class='max-w-[var(--main-container)] px-[15px]')
+	.mx-auto.w-full(class='max-w-[var(--container)]')
+		.grid.gap-8(class='l:grid-cols-[14rem_minmax(0,1fr)] l:gap-12 l:items-start')
+			nav.style-guide-container__nav.style-guide-container__nav--desktop.sticky.hidden.rounded-lg.bg-gray-100.p-3(
+				class='l:block top-[calc(var(--header-height)+1rem)]',
+				aria-label='Style guide'
+			)
+				ul.style-guide-container__nav-list.m-0.flex.list-none.flex-col.gap-1.p-0
+					each item in styleGuideContainerData.items
+						li.style-guide-container__nav-item.m-0
+							+styleGuideNavLink(item, 'desktop')
+
+			.style-guide-container__content.flex.min-w-0.flex-col(
+				class='gap-[var(--section-gap)] [&_section]:scroll-mt-[calc(var(--header-height)+1rem)]'
+			)
+				include color-table
+				include typography-module
+				include buttons-module
+				include editor-css
+				include flex-module
+				include grid-module
+				include json-data
+				include list-module
+				include markdown
+				include sidebar-module
+				include sprite-svg
+				include table-module
+				include text-module
+
+	.style-guide-container__mobile(class='l:hidden')
+		#style-guide-panel.style-guide-container__panel.fixed.right-4.flex.flex-col.overflow-hidden.rounded-xl.p-4(
+			class='bottom-[5.5rem] z-[120] max-h-[min(70vh,32rem)] w-[min(20rem,calc(100vw-2rem))] bg-[#2d3e4f] shadow-[0_16px_40px_rgba(0,0,0,0.28)]',
+			hidden
+		)
+			p.style-guide-container__panel-title.mb-3.font-semibold(class='text-[0.9375rem] text-[#c5cdd6]')= styleGuideContainerData.panelTitle
+			nav.style-guide-container__nav.style-guide-container__nav--mobile(
+				aria-label='Style guide mobile'
+			)
+				ul.style-guide-container__nav-list.m-0.flex.list-none.flex-col.gap-1.overflow-y-auto.p-0.pr-1(
+					class='max-h-[min(55vh,26rem)]'
+				)
+					each item in styleGuideContainerData.items
+						li.style-guide-container__nav-item.m-0
+							+styleGuideNavLink(item, 'mobile')
+
+		button.style-guide-container__fab.fixed.right-4.bottom-4.inline-flex.size-14.cursor-pointer.items-center.justify-center.rounded-full.border-0.text-white.duration-200(
+			class='z-[130] bg-[var(--second-color)] shadow-[0_8px_24px_rgba(0,123,223,0.35)] transition-[transform,background-color,box-shadow] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--first-color)] [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-0.5 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[var(--second-color-alt)]',
+			type='button',
+			aria-expanded='false',
+			aria-controls='style-guide-panel',
+			aria-label='Abrir navegacion del style guide'
+		)
+			span.style-guide-container__fab-icon.style-guide-container__fab-icon--open.absolute.leading-none.font-normal(
+				class='text-[1.75rem] group-[.is-nav-open]:hidden',
+				aria-hidden='true'
+			) +
+			span.style-guide-container__fab-icon.style-guide-container__fab-icon--close.absolute.hidden.leading-none.font-normal(
+				class='text-[2rem] group-[.is-nav-open]:block',
+				aria-hidden='true'
+			) ×

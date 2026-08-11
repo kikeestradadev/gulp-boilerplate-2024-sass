@@ -1,0 +1,35 @@
+---
+description: Usar sintaxis larga y explicita en Pug, sin shorthand estilo Emmet
+globs: "**/*.pug"
+alwaysApply: false
+---
+
+# Sintaxis Pug Explicita
+
+En este proyecto, los componentes Pug se escriben con sintaxis larga para que las clases, variables y partes dinamicas sean mas legibles.
+
+## Correcto
+
+```pug
+header(class='fixed top-0 left-0 right-0 z-10 w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--header-height)]')
+section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px]")
+div(class="w-full max-w-[var(--container)] mx-auto")
+h2(class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold") Titulo
+```
+
+## Incorrecto
+
+```pug
+header.fixed.top-0.left-0.z-10.w-full
+section.w-full.max-w-[var(--main-container)].mx-auto
+div.container
+h2.text-3xl.font-bold Titulo
+```
+
+## Reglas
+
+1. No uses shorthand de Pug tipo `tag.class`, `tag#id`, `.class` o cadenas estilo Emmet.
+2. Declara las clases con atributo explicito: `tag(class="...")` o `tag(class='...')`.
+3. Para clases dinamicas o variables CSS, manten todo dentro del atributo `class`.
+4. Prioriza legibilidad sobre brevedad, especialmente en componentes, layout, storybook y bloques con tokens CSS.
+5. Un header `fixed` necesita `left-0 right-0` + `mx-auto` para centrar `max-w-[var(--main-container)]` en pantallas anchas.

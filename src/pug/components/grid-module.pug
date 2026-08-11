@@ -1,0 +1,11 @@
+- let internalSaludo = 'Internal Module';
+section#grid.mx-auto.w-full.border(, class='max-w-[var(--main-container)] border-[steelblue] px-[15px]') 
+	.mx-auto.w-full.border(class='max-w-[var(--container)] border-[tomato]') 
+		h2.font-bold.text-red-500(class='text-[length:var(--h2-size)] leading-[length:var(--h2-line)]') grid
+		.grid.grid-cols-1.gap-5(
+			class='m:grid-cols-3 l:grid-cols-4 xxl:grid-cols-7 sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6'
+		)
+			- for (let i = 1; i <= 10; i++)
+				.flex.h-32.items-center.justify-center.bg-red-300(class='min-[640px]:max-[1280px]:bg-[blue]')
+					span: b= internalSaludo
+						| #{ i }

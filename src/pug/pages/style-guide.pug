@@ -1,0 +1,11 @@
+extends ../config/template
+
+block append config
+	- currentPage = 'style-guide';
+	- siteName = 'Style Guide';
+	- content = 'content';
+	- pageDescription = 'Style Guide de MyBoilerplate';
+
+block main-container
+	include ../components/style-guide-container
+block scripts

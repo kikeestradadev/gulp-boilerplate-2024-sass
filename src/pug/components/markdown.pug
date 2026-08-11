@@ -1,0 +1,32 @@
+section#markdown.mx-auto.w-full.border(, class='max-w-[var(--main-container)] border-[steelblue] px-[15px]') 
+	.mx-auto.w-full.border(class='max-w-[var(--container)] border-[tomato]') 
+		h1.font-bold(class='text-[length:var(--h1-size)] leading-[length:var(--h1-line)]') Write Markdown in the html file
+		:markdown-it
+			- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+			- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+			- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+			- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+		h1.font-bold(class='text-[length:var(--h1-size)] leading-[length:var(--h1-line)]') Write Markdown in the html file (html)
+		:markdown-it(html)
+			```html
+				<!DOCTYPE html>
+				<html lang="en">
+				<head>
+					<title>Pug</title>
+					<script type="text/javascript">
+						foo = true;
+						bar = function () {};
+						if (foo) { bar(1 + 5) }
+					</script>
+				</head>
+				<body>
+					<h1>Pug - node template engine</h1>
+					<div id="container" class="col">
+					<p>You are amazing</p>
+					<p> Lorem ipsum.</p>
+					</div>
+				</body>
+				</html>
+			```
+		h1.font-bold(class='text-[length:var(--h1-size)] leading-[length:var(--h1-line)]') Importing Markdown files in the html
+		include:markdown-it(html) ../../md/example.md

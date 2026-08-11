@@ -1,0 +1,22 @@
+---
+description: Antes de cualquier cambio, revisar .cursor/rules y .cursor/skills relevantes
+alwaysApply: true
+---
+
+# Revisar rules y skills primero
+
+Antes de implementar, refactorizar o crear archivos en este repo:
+
+1. Revisa `.cursor/rules/` y `.cursor/skills/`.
+2. **Lee** (con la herramienta Read) los rules/skills que apliquen a la tarea.
+3. Solo entonces edita código.
+
+No omitas convenciones del proyecto por asumirlas. En especial:
+
+- Tailwind 4 only (`tailwind-v4-only`)
+- Tokens `:root` en markup (`css-root-variables`)
+- Layout `--main-container` / `--container` (`layout-containers`)
+- Pug sintaxis larga + datos en `src/data/*-data.json` (`pug-long-syntax`, `pug-data-files`)
+- Módulos JS camelCase + Swiper CDN (`javascript-modules`, skill `create-slider-data`)
+
+El skill `review-rules-skills` detalla el mapa completo. Síguelo al inicio de cada tarea.

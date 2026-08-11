@@ -1,0 +1,11 @@
+extends ../config/template
+
+block append config
+	- currentPage = 'home';
+	- siteName = 'Layouts';
+	- content = 'content';
+	- pageDescription = 'Pagina inicial de MyBoilerplate';
+
+block main-container
+	h1.font-bold(class='text-[length:var(--h1-size)] leading-[length:var(--h1-line)]') Home
+block scripts

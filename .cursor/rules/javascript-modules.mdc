@@ -1,0 +1,68 @@
+---
+description: Módulos JS en camelCase, multi-instancia, CDN (Swiper) e init desde index.js
+globs: "src/js/**/*.js"
+alwaysApply: false
+---
+
+# Módulos JavaScript
+
+Cada comportamiento vive en `src/js/modules/`. esbuild agrupa desde `src/js/index.js` hacia `public/index.js`.
+
+## Naming
+
+| Capa | Convención | Ejemplo |
+|------|------------|---------|
+| Archivo | `camelCase.js` | `alliesSlider.js` |
+| Constante | mismo nombre `camelCase` | `const alliesSlider` |
+| Raíz DOM | kebab-case alineado al Pug | `.allies-slider` |
+| Flag ready | `dataset.{camelCase}Ready` | `root.dataset.alliesSliderReady` |
+
+Sliders Swiper: el archivo **termina en `Slider`** (`heroSlider.js`, `alliesSlider.js`), no uses `swiper` en el nombre del módulo.
+
+## Módulo
+
+```js
+const alliesSlider = () => {
+	if (typeof Swiper === 'undefined') return;
+
+	document.querySelectorAll('.allies-slider').forEach((root) => {
+		if (root.dataset.alliesSliderReady === 'true') return;
+
+		const el = root.querySelector('.swiper');
+		if (!el) return;
+
+		new Swiper(el, {
+			slidesPerView: 1,
+			spaceBetween: 16,
+		});
+
+		root.dataset.alliesSliderReady = 'true';
+	});
+};
+
+export default alliesSlider;
+```
+
+## Entrada principal
+
+Importa cada módulo en `src/js/index.js` y ejecútalo en `initComponents` tras `DOMContentLoaded`.
+
+```js
+import alliesSlider from './modules/alliesSlider';
+
+const initComponents = () => {
+	alliesSlider();
+};
+
+document.addEventListener('DOMContentLoaded', initComponents);
+```
+
+## Reglas
+
+1. Un archivo por módulo en `src/js/modules/`; nombre de archivo y constante en `camelCase`.
+2. `const` + función flecha + un único `export default`.
+3. Soporta múltiples raíces con `querySelectorAll`; acota consultas y listeners a `root`.
+4. Idempotente: marca `dataset.*Ready` para no duplicar listeners ni instancias Swiper.
+5. Valida globals de CDN (`Swiper`, etc.) antes de usarlos. Swiper entra por CDN en `template.pug`, no por npm.
+6. No añadas dependencias npm al bundle sin necesidad explícita.
+7. No escribas la implementación de un módulo directamente en `index.js`.

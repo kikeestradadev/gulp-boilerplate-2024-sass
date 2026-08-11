@@ -1,0 +1,30 @@
+section#listas.mx-auto.w-full.border(, class='max-w-[var(--main-container)] border-[steelblue] px-[15px]')
+	.mx-auto.w-full.border(class='max-w-[var(--container)] border-[tomato]')
+		h2.mb-6.font-bold(class='text-[length:var(--h2-size)] leading-[length:var(--h2-line)]') Listas
+		.grid.gap-8(class='m:grid-cols-2')
+			div
+				h3.mb-4.font-semibold(class='text-[length:var(--h3-size)] leading-[length:var(--h3-line)]') Unordered list (ul)
+				ul.my-0.list-disc.pl-10(
+					class='text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]'
+				)
+					li.mb-2 Item de lista no ordenada uno
+					li.mb-2 Item de lista no ordenada dos
+					li.mb-2 Item de lista no ordenada tres
+						ul.mt-2.list-disc.pl-8
+							li.mb-2 Subitem anidado A
+							li.mb-2 Subitem anidado B
+					li.mb-2 Item de lista no ordenada cuatro
+					li Item de lista no ordenada cinco
+			div
+				h3.mb-4.font-semibold(class='text-[length:var(--h3-size)] leading-[length:var(--h3-line)]') Ordered list (ol)
+				ol.my-0.list-decimal.pl-10(
+					class='text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]'
+				)
+					li.mb-2 Primer paso o punto numerado
+					li.mb-2 Segundo paso o punto numerado
+					li.mb-2 Tercer paso o punto numerado
+						ol.mt-2.list-decimal.pl-8
+							li.mb-2 Subpaso 3.1
+							li.mb-2 Subpaso 3.2
+					li.mb-2 Cuarto paso o punto numerado
+					li Quinto paso o punto numerado

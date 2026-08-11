@@ -1,0 +1,55 @@
+block config
+	- let currentPage = 'home';
+	- let content = 'My Page';
+	- let siteName = 'GulpBoilerplate';
+	- let pageDescription = 'Breve descripción del sitio web que ayuda en el SEO.';
+doctype html
+html(lang='en', prefix='og: http://ogp.me/ns#', class='no-js')
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		title= currentPage.slice(0, 1).toUpperCase() + currentPage.slice(1) + ' | ' + siteName
+		meta(name='description', content=pageDescription)
+		meta(name='robots', content='index, follow')
+		link(rel='canonical', href='')
+		meta(name='theme-color', content='#0096D9')
+		meta(name='format-detection', content='telephone=no')
+		link(rel='icon', href='./assets/sprite.svg', type='image/svg+xml')
+		include open-graph
+		include twitter-cards
+		link(rel='preconnect', href='https://fonts.googleapis.com')
+		link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin)
+		link(
+			href='https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap',
+			rel='stylesheet'
+		)
+		link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css')
+		link(rel='stylesheet', href=`./assets/prism.css?v=${assetVersion}`)
+		link(rel='stylesheet', href=`styles.css?v=${assetVersion}`)
+	body(
+		class=`${currentPage} flex min-h-screen flex-col items-center bg-[var(--bg-body)] pt-[var(--header-height)]`,
+		itemscope,
+		itemtype='http://schema.org/WebPage'
+	)
+		//- here start the Main Header
+		header(
+			class='fixed top-0 right-0 left-0 z-10 mx-auto w-full min-h-[var(--header-height)] max-w-[var(--main-container)] bg-[var(--base-color)] px-[15px]'
+		)
+			block main-header
+		//- here ends the Main Header
+		//- here start the Main Container
+		main(
+			class='flex w-full flex-1 flex-col max-w-[var(--main-container)] gap-[var(--section-gap)] py-[var(--section-gap)]'
+		)
+			block main-container
+		//- here ends the Main Container
+		//- here start the Main Footer
+		footer(
+			class='mx-auto w-full min-h-[var(--footer-height)] max-w-[var(--main-container)] bg-[var(--base-color)] px-[15px]'
+		)
+			block main-footer
+		//- here ends the Main Footer
+		include ../components/floating-button
+		script(src='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js')
+		script(src=`index.js?v=${assetVersion}`)
+		block scripts

@@ -1,0 +1,17 @@
+-
+	const floatingButtonData = {
+		home: {
+			href: './style-guide.html',
+			label: 'Style Guide',
+		},
+		'style-guide': {
+			href: './index.html',
+			label: 'Home',
+		},
+	}
+	const floatingButton = floatingButtonData[currentPage] || floatingButtonData.home
+
+a.floating-button.fixed.bottom-4.left-4.inline-flex.min-h-12.items-center.justify-center.rounded-full.px-5.py-3.text-sm.font-semibold.tracking-wide.text-white.no-underline.duration-200(
+	class='z-[100] bg-[var(--first-color)] shadow-[0_8px_24px_rgba(0,0,0,0.18)] transition-[transform,background-color,box-shadow] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--second-color)] sm:bottom-6 sm:left-6 sm:text-base [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-0.5 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[var(--first-color-alt)] [@media(hover:hover)_and_(pointer:fine)]:hover:text-white [@media(hover:hover)_and_(pointer:fine)]:hover:no-underline [@media(hover:hover)_and_(pointer:fine)]:hover:shadow-[0_12px_28px_rgba(0,0,0,0.22)]',
+	href=floatingButton.href
+)= floatingButton.label

@@ -1,0 +1,78 @@
+---
+description: Este proyecto usa solo Tailwind CSS 4 (CSS-first). Prohibido Tailwind 3, @tailwind directives y theme JS legado como fuente de verdad.
+alwaysApply: true
+---
+
+# Tailwind CSS 4 only
+
+Este boilerplate trabaja **exclusivamente con Tailwind CSS 4**. No uses APIs, paquetes, docs ni patrones de Tailwind 3.
+
+## Stack obligatorio
+
+- Paquete: `tailwindcss` ^4 + `@tailwindcss/postcss`
+- Entrada CSS: `src/styles/styles.css`
+- Pipeline: PostCSS vía Gulp (`@tailwindcss/postcss`)
+
+## Correcto (v4)
+
+```css
+@import "tailwindcss";
+
+@source "../pug/**/*.pug";
+@source "../js/**/*.js";
+
+@theme {
+	--breakpoint-sm: 480px;
+	--font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+	--main-container: 3500px;
+}
+```
+
+```js
+// postcss.config.js
+export default {
+	plugins: {
+		'@tailwindcss/postcss': {},
+		autoprefixer: {},
+	},
+};
+```
+
+## Incorrecto (v3 — nunca)
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+```js
+// No uses esto como fuente de verdad del design system
+module.exports = {
+	content: ['./src/**/*.{html,js}'],
+	theme: { extend: { colors: { brand: '#007bdf' } } },
+	plugins: [],
+};
+```
+
+- No instales ni sugieras `tailwindcss@3`.
+- No uses el CLI/flujo clásico de v3 (`npx tailwindcss -i …` como setup principal).
+- No migres tokens a `theme.extend` en JS; usa `@theme` y/o `:root` en CSS.
+- No documentes ni copies snippets de la docs de Tailwind 3.
+
+## Practicas del proyecto
+
+1. Utilidades en Pug con sintaxis larga: `section(class="w-full max-w-[var(--main-container)] …")`.
+2. Tokens de layout/color/tipo en `:root` o `@theme`; consumo con `propiedad-[var(--token)]`.
+3. Breakpoints custom del proyecto viven en `@theme` (`--breakpoint-s/sm/m/l/…`). Prefijos: `sm:`, `m:`, `l:`, `lg:`, etc.
+4. Content detection con `@source` en el CSS de entrada (no depender de `content` estilo v3).
+5. Si hace falta config JS, debe ser compatible con v4; la fuente de verdad del estilo es CSS-first.
+
+## Al implementar UI
+
+- Antes de proponer una API de Tailwind, confirma que existe en **v4**.
+- Si una sugerencia viene de memoria/docs de v3, rechazala y usa el equivalente v4.
+- No añadas dependencias pensadas solo para el ecosistema v3.

@@ -1,0 +1,23 @@
+-
+	const colors = [
+		{ name: 'Principal', hex: '#007BDF', css: '--first-color' },
+		{ name: 'Principal Alt', hex: '#006DC6', css: '--first-color-alt' },
+		{ name: 'Secundario', hex: '#00CBFF', css: '--second-color' },
+		{ name: 'Secundario Alt', hex: '#00BFF0', css: '--second-color-alt' },
+		{ name: 'Terciario', hex: '#FF3C32', css: '--third-color' },
+		{ name: 'Terciario Alt', hex: '#FF2419', css: '--third-color-alt' },
+	]
+
+section#colores.mx-auto.w-full.border(, class='max-w-[var(--main-container)] border-[steelblue] px-[15px]')
+	.mx-auto.w-full(class='max-w-[var(--container)]')
+		h2.mb-6.font-bold(class='text-[length:var(--h2-size)] leading-[length:var(--h2-line)]') Tabla de colores:
+		.grid.grid-cols-1.gap-5(class='m:grid-cols-3 l:grid-cols-4 sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6')
+			each color in colors
+				article.overflow-hidden.rounded-lg.bg-white.shadow-md
+					.h-24(style=`background-color: ${color.hex}`)
+					.space-y-2.p-4.text-center
+						h3.text-base.font-bold= color.name
+						p.text-sm.text-gray-500= color.hex
+						p.text-xs.text-gray-600
+							| CSS name:
+							code.rounded.bg-red-50.px-1.font-mono.text-red-600= color.css
