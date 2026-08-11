@@ -1,7 +1,7 @@
 {
 	"name": "gulp-boilerplate-2024",
 	"version": "1.0.0",
-	"assetVersion": "1.0.13",
+	"assetVersion": "1.0.14",
 	"description": "Simple scaffolding for static web projects with Gulp + Tailwind CSS 4",
 	"type": "module",
 	"main": "gulpfile.js",
