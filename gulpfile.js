@@ -116,6 +116,47 @@ const openBrowser = (url) => {
 	exec(command, () => {});
 };
 
+const readRequestBody = (req) =>
+	new Promise((resolve, reject) => {
+		const chunks = [];
+		req.on('data', (chunk) => chunks.push(chunk));
+		req.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
+		req.on('error', reject);
+	});
+
+const PERSONA_SRC = path.resolve('src/data/persona.json');
+const PERSONA_PUBLIC = path.resolve('public/data/persona.json');
+
+const readPersonasStore = () => {
+	try {
+		const parsed = JSON.parse(fs.readFileSync(PERSONA_SRC, 'utf8'));
+		if (Array.isArray(parsed?.personas)) {
+			return parsed;
+		}
+		if (Array.isArray(parsed)) {
+			return { personas: parsed };
+		}
+	} catch {
+		// empty store
+	}
+	return { personas: [] };
+};
+
+const writePersonasStore = (store) => {
+	const pretty = `${JSON.stringify(store, null, '\t')}\n`;
+	fs.mkdirSync(path.dirname(PERSONA_PUBLIC), { recursive: true });
+	fs.writeFileSync(PERSONA_SRC, pretty);
+	fs.writeFileSync(PERSONA_PUBLIC, pretty);
+};
+
+const sendJson = (res, statusCode, payload) => {
+	res.writeHead(statusCode, {
+		'Content-Type': 'application/json; charset=utf-8',
+		'Cache-Control': 'no-store',
+	});
+	res.end(JSON.stringify(payload));
+};
+
 const startDevServer = () => {
 	const server = http.createServer((req, res) => {
 		const requestUrl = new URL(req.url || '/', `http://${req.headers.host}`);
@@ -131,6 +172,55 @@ const startDevServer = () => {
 			req.on('close', () => {
 				liveClients.delete(res);
 			});
+			return;
+		}
+
+		// Mini API: simulación de backend para persona.json
+		if (requestUrl.pathname === '/api/personas') {
+			if (req.method === 'OPTIONS') {
+				res.writeHead(204, {
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+					'Access-Control-Allow-Headers': 'Content-Type',
+				});
+				res.end();
+				return;
+			}
+
+			if (req.method === 'GET') {
+				sendJson(res, 200, readPersonasStore());
+				return;
+			}
+
+			if (req.method === 'POST') {
+				readRequestBody(req)
+					.then((raw) => {
+						let persona;
+						try {
+							persona = JSON.parse(raw || '{}');
+						} catch {
+							sendJson(res, 400, { error: 'JSON invalido' });
+							return;
+						}
+
+						if (!persona || typeof persona !== 'object' || Array.isArray(persona)) {
+							sendJson(res, 400, { error: 'Se espera un objeto persona' });
+							return;
+						}
+
+						const store = readPersonasStore();
+						store.personas.push(persona);
+						writePersonasStore(store);
+						console.log(`[api] persona agregada → ${PERSONA_SRC} (${store.personas.length})`);
+						sendJson(res, 201, store);
+					})
+					.catch(() => {
+						sendJson(res, 500, { error: 'No se pudo guardar persona.json' });
+					});
+				return;
+			}
+
+			sendJson(res, 405, { error: 'Metodo no permitido' });
 			return;
 		}
 
@@ -360,7 +450,11 @@ gulp.task(
 		() =>
 			gulp
 				.src('src/images/**/*', { encoding: false, allowEmpty: true })
-				.pipe(gulp.dest('public/images'))
+				.pipe(gulp.dest('public/images')),
+		() =>
+			gulp
+				.src('src/data/**/*.json', { allowEmpty: true })
+				.pipe(gulp.dest('public/data'))
 	)
 );
 
@@ -414,13 +508,10 @@ gulp.task(
 		);
 		gulp.watch('src/scss/**/*.scss', debounce(gulp.series('styles', reloadCss), 120));
 		gulp.watch('src/js/**/*.js', debounce(gulp.series('scripts', reload), 120));
+		gulp.watch('src/md/**/*.md', debounce(gulp.series('pug', reload), 120));
 		gulp.watch(
-			['src/data/**/*.json', 'src/md/**/*.md'],
-			debounce(gulp.series('pug', reload), 120)
-		);
-		gulp.watch(
-			['src/assets/**/*', 'src/images/**/*'],
-			debounce(gulp.series('assets', reload), 120)
+			['src/assets/**/*', 'src/images/**/*', 'src/data/**/*.json'],
+			debounce(gulp.series('assets', 'pug', reload), 120)
 		);
 
 		done();

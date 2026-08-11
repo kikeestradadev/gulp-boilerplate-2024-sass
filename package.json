@@ -1,7 +1,7 @@
 {
 	"name": "gulp-boilerplate-2024-sass",
 	"version": "1.0.0",
-	"assetVersion": "1.0.14",
+	"assetVersion": "1.0.16",
 	"description": "Simple scaffolding for static web projects with Gulp + Sass",
 	"type": "module",
 	"main": "gulpfile.js",

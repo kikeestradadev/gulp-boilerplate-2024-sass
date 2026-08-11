@@ -1,0 +1,57 @@
+---
+description: Formularios fake + API local en Gulp para simular backend escribiendo JSON en src/data
+globs: "{src/pug/style-guide/**/*form*.pug,src/js/modules/**Form.js,src/data/**/*.json,gulpfile.js}"
+alwaysApply: false
+---
+
+# Formularios fake (simulación de backend)
+
+Este boilerplate se usa para **simulaciones**. Los formularios “fake” persisten datos en `src/data/*.json` mediante una **API local** del servidor de Gulp (`npm run dev`). No descargan archivos a Descargas como sustituto de guardar.
+
+## Referencia canónica
+
+| Pieza | Ejemplo (`persona`) |
+|-------|---------------------|
+| Store JSON | `src/data/persona.json` → `{ "personas": [] }` |
+| Config del form | `src/data/persona-form-data.json` → local `personaFormData` |
+| Specimen | `src/pug/style-guide/persona-form.pug` |
+| SCSS | `src/scss/modules/_persona-form.scss` |
+| JS | `src/js/modules/personaForm.js` |
+| API | `GET` / `POST` `/api/personas` en `gulpfile.js` → `startDevServer` |
+
+## Contrato del store
+
+```json
+{
+	"personas": []
+}
+```
+
+- El archivo de persistencia **no** usa sufijo `-data` si es solo el store de la API (evita confusión con config de UI).
+- La colección va en una clave plural (`personas`, `items`, etc.).
+- `POST` **agrega** un objeto a la colección (no sobrescribe el array entero salvo que el ejercicio lo pida).
+- Al guardar, escribe **`src/data/...` y `public/data/...`**.
+
+## Contrato del form config (`*-form-data.json`)
+
+Debe incluir al menos: `title`, `lead`, `submitLabel`, `listTitle`, `emptyList`, `successMessage`, `errorMessage`, `apiUrl`, `fields[]` (`name`, `label`, `type`, `placeholder`, `required`, …).
+
+## Comportamiento JS
+
+1. Al montar: `GET apiUrl` → render lista + preview del JSON.
+2. Al Submit: `preventDefault` → validar → `POST` del objeto → actualizar lista/preview → `form.reset()`.
+3. Si falla el fetch: mostrar `errorMessage` (típicamente “usa npm run dev”).
+4. **Prohibido** usar `Blob` + `download` como “guardar” en este patrón.
+
+## API en Gulp
+
+- Solo existe con **`npm run dev`** (servidor HTTP del `gulpfile.js`).
+- **GitHub Pages / `npm run deploy` no pueden escribir en disco** — no prometas persistencia ahí.
+- Rutas bajo `/api/...`; respuestas JSON; `POST` con `Content-Type: application/json`.
+
+## Reglas
+
+1. Nuevos formularios fake siguen la simetría del skill `create-fake-backend-form`.
+2. Specimen en `src/pug/style-guide/`, no en `components/` (salvo UI reutilizable).
+3. Respeta `pug-long-syntax`, `bem-module-layout`, `javascript-modules`, `sass-hover-touch`.
+4. Documenta en el `lead` del form que la persistencia requiere `npm run dev`.

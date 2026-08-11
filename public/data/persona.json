@@ -1,0 +1,22 @@
+{
+	"personas": [
+		{
+			"nombre": "Enique",
+			"edad": 47,
+			"telefono": "+50670118183",
+			"estatura": 1.74,
+			"email": "kikeestradadev@gmail.com",
+			"ciudad": "San José",
+			"ocupacion": "programador"
+		},
+		{
+			"nombre": "Iliana",
+			"edad": 48,
+			"telefono": "+50689951259",
+			"estatura": 1.68,
+			"email": "moralesri@gmail.com",
+			"ciudad": "San José",
+			"ocupacion": "administradora"
+		}
+	]
+}

@@ -52,3 +52,4 @@ public/      build output
 - JS is bundled with esbuild (`scripts` task).
 - Sass uses `@import` (no `@use`); breakpoints live in `src/scss/core/_breakpoints.scss`.
 - Dev server is built-in: http://localhost:3000 with live reload.
+- **Fake backend forms** (style guide): Submit persists to `src/data/*.json` via local API routes in Gulp (`/api/...`). Works only with `npm run dev` — not on GitHub Pages. See `.cursor/rules/fake-backend-forms.mdc` and skill `create-fake-backend-form`.

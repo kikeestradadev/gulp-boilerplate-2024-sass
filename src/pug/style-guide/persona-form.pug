@@ -1,0 +1,41 @@
+section(
+	class='persona-form',
+	id='persona-form',
+	data-api-url=personaFormData.apiUrl,
+	data-success-message=personaFormData.successMessage,
+	data-error-message=personaFormData.errorMessage,
+	data-empty-list=personaFormData.emptyList
+)
+	h2(class='persona-form__title')= personaFormData.title
+	p(class='persona-form__lead')= personaFormData.lead
+
+	form(class='persona-form__form', novalidate)
+		each field in personaFormData.fields
+			div(class='persona-form__field')
+				label(class='persona-form__label', for=`persona-${field.name}`)= field.label
+				input(
+					class='persona-form__input',
+					id=`persona-${field.name}`,
+					name=field.name,
+					type=field.type,
+					placeholder=field.placeholder,
+					required=field.required,
+					min=field.min,
+					max=field.max,
+					step=field.step
+				)
+
+		div(class='persona-form__actions')
+			button(class='btn btn--primary', type='submit')= personaFormData.submitLabel
+
+	p(class='persona-form__status', hidden, role='status')
+
+	div(class='persona-form__list-wrap')
+		h3(class='persona-form__list-title')= personaFormData.listTitle
+		p(class='persona-form__list-empty')= personaFormData.emptyList
+		ul(class='persona-form__list')
+
+	div(class='persona-form__preview', hidden)
+		h3(class='persona-form__preview-title') src/data/persona.json
+		pre(class='persona-form__preview-code')
+			code(class='language-json')

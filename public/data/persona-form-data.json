@@ -1,0 +1,65 @@
+{
+	"title": "Formulario persona",
+	"lead": "Simulacion de backend (solo con npm run dev): al Submit se agrega la persona en src/data/persona.json. Puedes registrar varias.",
+	"submitLabel": "Submit",
+	"listTitle": "Personas guardadas",
+	"emptyList": "Todavia no hay personas. Envia el formulario para agregar la primera.",
+	"successMessage": "Persona agregada en src/data/persona.json",
+	"errorMessage": "No se pudo guardar. Usa npm run dev (la API local no existe en GitHub Pages).",
+	"apiUrl": "/api/personas",
+	"fields": [
+		{
+			"name": "nombre",
+			"label": "Nombre",
+			"type": "text",
+			"placeholder": "Ana Perez",
+			"required": true
+		},
+		{
+			"name": "edad",
+			"label": "Edad",
+			"type": "number",
+			"placeholder": "28",
+			"required": true,
+			"min": 0,
+			"max": 120
+		},
+		{
+			"name": "telefono",
+			"label": "Telefono",
+			"type": "tel",
+			"placeholder": "+52 55 1234 5678",
+			"required": true
+		},
+		{
+			"name": "estatura",
+			"label": "Estatura (m)",
+			"type": "number",
+			"placeholder": "1.70",
+			"required": true,
+			"step": "0.01",
+			"min": 0
+		},
+		{
+			"name": "email",
+			"label": "Email",
+			"type": "email",
+			"placeholder": "ana@example.com",
+			"required": true
+		},
+		{
+			"name": "ciudad",
+			"label": "Ciudad",
+			"type": "text",
+			"placeholder": "Ciudad de Mexico",
+			"required": true
+		},
+		{
+			"name": "ocupacion",
+			"label": "Ocupacion",
+			"type": "text",
+			"placeholder": "Disenadora",
+			"required": true
+		}
+	]
+}
