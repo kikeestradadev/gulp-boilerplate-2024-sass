@@ -58,3 +58,4 @@ JSON legados sin sufijo `-data` (p. ej. `slider.json`, `example.json`) siguen fu
 6. Módulos UI en `src/pug/components/`; specimens y página del storybook en `src/pug/style-guide/`; páginas de sitio en `src/pug/pages/`.
 7. Sliders: ver skill `create-slider-data`.
 8. `assetVersion` lo inyecta Gulp desde `package.json` (skill `bump-assets`).
+9. Seeds de emulación de BD (tablas `persona.json`, `tutor.json`, …) van en **`src/data/db/`**, no en la raíz de `src/data/` (rule/skill `emulated-db`). Los `*-data.json` de UI Pug siguen en `src/data/`.

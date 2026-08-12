@@ -1,4 +1,4 @@
-.persona-grid {
+.tutor-grid {
 	&__title {
 		margin-bottom: 0.5rem;
 	}
@@ -30,8 +30,7 @@
 		font-size: 0.9375rem;
 	}
 
-	&__input,
-	&__select {
+	&__input {
 		width: 100%;
 		padding: 0.75rem 1rem;
 		border: 1px solid #cfcfcf;
@@ -119,22 +118,9 @@
 	}
 
 	&__name {
-		margin: 0 0 0.35rem;
+		margin: 0;
 		font-weight: 700;
 		font-size: 1.0625rem;
-	}
-
-	&__role {
-		margin: 0 0 0.35rem;
-		font-size: 0.9375rem;
-		color: var(--link-color, #8b852e);
-	}
-
-	&__tutor {
-		margin: 0 0 0.75rem;
-		font-size: 0.875rem;
-		font-weight: 600;
-		color: var(--header-bg, #333);
 	}
 
 	&__meta {

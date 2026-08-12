@@ -1,0 +1,34 @@
+{
+	"title": "Tutores CRUD",
+	"lead": "Crea tutores aqui; luego asignalos en el formulario de Personas (dropdown). Seed desde ./data/db/tutor.json; cambios en localStorage compartido con Personas.",
+	"dataUrl": "./data/db/tutor.json",
+	"personaDataUrl": "./data/db/persona.json",
+	"storageKey": "crud-demo-store-v3",
+	"formTitleCreate": "Crear tutor",
+	"formTitleEdit": "Actualizar tutor",
+	"submitLabelCreate": "Crear",
+	"submitLabelUpdate": "Actualizar",
+	"cancelLabel": "Cancelar",
+	"editLabel": "Editar",
+	"deleteLabel": "Eliminar",
+	"deleteConfirm": "¿Eliminar este tutor?",
+	"deleteBlockedMessage": "No se puede eliminar: hay personas con este tutor asignado.",
+	"gridTitle": "Listado de tutores",
+	"emptyList": "No hay tutores. Crea uno con el formulario o revisa el seed data/db/tutor.json.",
+	"errorMessage": "No se pudo cargar el seed ./data/db/tutor.json. Corre build/assets para copiar public/data.",
+	"loadingMessage": "Cargando tutores…",
+	"createdMessage": "Tutor creado.",
+	"updatedMessage": "Tutor actualizado.",
+	"deletedMessage": "Tutor eliminado.",
+	"previewTitle": "Estado actual (localStorage)",
+	"countLabel": "registros",
+	"fields": [
+		{
+			"name": "nombre",
+			"label": "Nombre",
+			"type": "text",
+			"placeholder": "Roberto Sanchez",
+			"required": true
+		}
+	]
+}

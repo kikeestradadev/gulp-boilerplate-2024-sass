@@ -32,6 +32,7 @@ No implementes “de memoria”. Omisiones tipicas: sintaxis Pug corta, shells s
 | Sliders / Swiper                                   | `create-slider-data` + `javascript-modules`                     |
 | JS en `src/js`                                     | `javascript-modules`                                            |
 | Datos fake / grilla JSON / simulación (fetch)      | `static-json-data`, skill `create-static-json-module`           |
+| Emulación BD / seeds / store / FK / JOIN           | `emulated-db`, skill `emulated-db` (`src/data/db/` + `src/js/db/`) |
 
 Si la tarea cruza varias capas (p. ej. un slider nuevo), lee **todos** los items del mapa que apliquen antes del primer edit.
 

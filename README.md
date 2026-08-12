@@ -52,4 +52,4 @@ public/      build output
 - JS is bundled with esbuild (`scripts` task).
 - Sass uses `@import` (no `@use`); breakpoints live in `src/scss/core/_breakpoints.scss`.
 - Dev server is built-in: http://localhost:3000 with live reload.
-- **Static JSON demos:** seed in `src/data/*.json` → `public/data/` → `fetch`. Interactive forms append via `localStorage` so the grid updates on Submit in both `npm run dev` and GitHub Pages (per browser). See rule `static-json-data` and skill `create-static-json-module`.
+- **Static JSON demos:** table seeds in `src/data/db/*.json` → `public/data/db/` → `fetch`. Interactive forms append via `localStorage` so the grid updates on Submit in both `npm run dev` and GitHub Pages (per browser). See rules `static-json-data` / `emulated-db` and skills `create-static-json-module` / `emulated-db`.

@@ -1,8 +1,9 @@
 {
 	"title": "Personas CRUD",
-	"lead": "Mantenimiento simulado (Create, Read, Update, Delete). Seed desde ./data/persona.json; cambios en localStorage. Funciona igual en npm run dev y GitHub Pages (por navegador).",
-	"dataUrl": "./data/persona.json",
-	"storageKey": "persona-grid-store-v2",
+	"lead": "Relacion Persona → Tutor (FK tutorId). Crea tutores en la seccion Tutores; aqui eliges uno en el dropdown. Seed desde JSON en data/db; cambios en localStorage compartido.",
+	"dataUrl": "./data/db/persona.json",
+	"tutorDataUrl": "./data/db/tutor.json",
+	"storageKey": "crud-demo-store-v3",
 	"formTitleCreate": "Crear persona",
 	"formTitleEdit": "Actualizar persona",
 	"submitLabelCreate": "Crear",
@@ -12,14 +13,17 @@
 	"deleteLabel": "Eliminar",
 	"deleteConfirm": "¿Eliminar esta persona?",
 	"gridTitle": "Listado de personas",
-	"emptyList": "No hay personas. Crea una con el formulario o revisa el seed persona.json.",
-	"errorMessage": "No se pudo cargar el seed ./data/persona.json. Corre build/assets para copiar public/data.",
+	"emptyList": "No hay personas. Crea una con el formulario o revisa el seed data/db/persona.json.",
+	"errorMessage": "No se pudo cargar el seed ./data/db/persona.json. Corre build/assets para copiar public/data.",
 	"loadingMessage": "Cargando personas…",
 	"createdMessage": "Persona creada.",
 	"updatedMessage": "Persona actualizada.",
 	"deletedMessage": "Persona eliminada.",
 	"previewTitle": "Estado actual (localStorage)",
 	"countLabel": "registros",
+	"tutorFieldLabel": "Tutor",
+	"tutorEmptyOption": "Sin tutor",
+	"tutorCardLabel": "Tutor",
 	"fields": [
 		{
 			"name": "nombre",
@@ -73,6 +77,12 @@
 			"type": "text",
 			"placeholder": "Disenadora",
 			"required": true
+		},
+		{
+			"name": "tutorId",
+			"label": "Tutor",
+			"type": "select",
+			"required": false
 		}
 	]
 }

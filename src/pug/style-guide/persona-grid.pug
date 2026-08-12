@@ -2,6 +2,7 @@ section(
 	class='persona-grid',
 	id='persona-grid',
 	data-url=personaGridData.dataUrl,
+	data-tutor-url=personaGridData.tutorDataUrl,
 	data-storage-key=personaGridData.storageKey,
 	data-error-message=personaGridData.errorMessage,
 	data-empty-list=personaGridData.emptyList,
@@ -17,7 +18,9 @@ section(
 	data-cancel-label=personaGridData.cancelLabel,
 	data-edit-label=personaGridData.editLabel,
 	data-delete-label=personaGridData.deleteLabel,
-	data-delete-confirm=personaGridData.deleteConfirm
+	data-delete-confirm=personaGridData.deleteConfirm,
+	data-tutor-empty-option=personaGridData.tutorEmptyOption,
+	data-tutor-card-label=personaGridData.tutorCardLabel
 )
 	h2(class='persona-grid__title')= personaGridData.title
 	p(class='persona-grid__lead')= personaGridData.lead
@@ -28,17 +31,26 @@ section(
 		each field in personaGridData.fields
 			div(class='persona-grid__field')
 				label(class='persona-grid__label', for=`persona-${field.name}`)= field.label
-				input(
-					class='persona-grid__input',
-					id=`persona-${field.name}`,
-					name=field.name,
-					type=field.type,
-					placeholder=field.placeholder,
-					required=field.required,
-					min=field.min,
-					max=field.max,
-					step=field.step
-				)
+				if field.type === 'select'
+					select(
+						class='persona-grid__select persona-grid__input',
+						id=`persona-${field.name}`,
+						name=field.name,
+						required=field.required
+					)
+						option(value='')= personaGridData.tutorEmptyOption
+				else
+					input(
+						class='persona-grid__input',
+						id=`persona-${field.name}`,
+						name=field.name,
+						type=field.type,
+						placeholder=field.placeholder,
+						required=field.required,
+						min=field.min,
+						max=field.max,
+						step=field.step
+					)
 
 		div(class='persona-grid__actions')
 			button(class='btn btn--primary persona-grid__submit', type='submit')= personaGridData.submitLabelCreate

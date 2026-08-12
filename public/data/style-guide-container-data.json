@@ -5,6 +5,7 @@
 		{ "label": "Tipografia", "href": "#tipografia" },
 		{ "label": "Botones", "href": "#botones" },
 		{ "label": "JSON data", "href": "#json-data" },
-		{ "label": "Personas JSON", "href": "#persona-grid" }
+		{ "label": "Tutores CRUD", "href": "#tutor-grid" },
+		{ "label": "Personas CRUD", "href": "#persona-grid" }
 	]
 }

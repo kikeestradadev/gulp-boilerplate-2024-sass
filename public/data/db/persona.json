@@ -7,7 +7,8 @@
 			"estatura": 1.74,
 			"email": "kikeestradadev@gmail.com",
 			"ciudad": "San José",
-			"ocupacion": "Programador"
+			"ocupacion": "Programador",
+			"tutorId": "tutor-001"
 		},
 		{
 			"nombre": "Iliana Morales",
@@ -16,7 +17,8 @@
 			"estatura": 1.68,
 			"email": "moralesri@gmail.com",
 			"ciudad": "San José",
-			"ocupacion": "Administradora"
+			"ocupacion": "Administradora",
+			"tutorId": "tutor-002"
 		},
 		{
 			"nombre": "Ana Pérez",
@@ -25,7 +27,8 @@
 			"estatura": 1.65,
 			"email": "ana.perez@example.com",
 			"ciudad": "Ciudad de México",
-			"ocupacion": "Diseñadora UX"
+			"ocupacion": "Diseñadora UX",
+			"tutorId": "tutor-003"
 		},
 		{
 			"nombre": "Luis Gómez",
@@ -43,7 +46,8 @@
 			"estatura": 1.6,
 			"email": "maria.ruiz@example.com",
 			"ciudad": "Heredia",
-			"ocupacion": "Frontend Developer"
+			"ocupacion": "Frontend Developer",
+			"tutorId": "tutor-001"
 		},
 		{
 			"nombre": "Carlos Méndez",

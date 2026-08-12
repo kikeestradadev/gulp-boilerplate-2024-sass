@@ -1,0 +1,45 @@
+---
+description: Emulación de BD — JS en src/js/db/ y seeds (tablas) en src/data/db/
+globs: "{src/js/db/**/*.js,src/js/modules/**/*.js,src/data/db/**/*.json}"
+alwaysApply: false
+---
+
+# Emulación de base de datos (`db/`)
+
+Separación conceptual: lo “de BD” no se mezcla con UI genérica ni con `*-data.json` de Pug.
+
+## Layout
+
+| Pieza | Ruta | Ejemplo |
+|-------|------|---------|
+| Lógica store / FK / JOIN | `src/js/db/` | `crudDemoStore.js` |
+| Seeds (tablas) | `src/data/db/` | `persona.json`, `tutor.json` |
+| Fetch en runtime | `public/data/db/` | `./data/db/persona.json` |
+| Config UI Pug | `src/data/*-grid-data.json` | `persona-grid-data.json` |
+| UI CRUD | `src/js/modules/` | `personaGrid.js` |
+
+## Qué va en `src/js/db/`
+
+- Store compartido (`localStorage`)
+- Load seed (`fetch` de `./data/db/*.json`)
+- Persist / sync entre módulos
+- Helpers de relación (FK, JOIN, `createId`, `findXById`)
+- Migraciones de storage key
+
+## Qué va en `src/data/db/`
+
+- Un JSON por “tabla” seed: `{ "personas": [ … ] }`, `{ "tutores": [ … ] }`
+- No pongas aquí `*-data.json` de plantillas Pug (esos siguen en `src/data/`)
+
+## Imports
+
+```js
+import { loadCrudStore, persistStore } from '../db/crudDemoStore';
+```
+
+## Reglas
+
+1. Nuevo seed de tabla → `src/data/db/{tabla}.json`.
+2. Nuevo JS de emulación → `src/js/db/`.
+3. No mezclar store/JOIN con markup DOM del módulo UI.
+4. Skill `emulated-db` + `static-json-data` / `create-static-json-module` para el módulo UI.

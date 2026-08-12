@@ -20,5 +20,6 @@ No omitas convenciones del proyecto por asumirlas. En especial:
 - Pug sintaxis larga + datos en `src/data/*-data.json` (`pug-long-syntax`, `pug-data-files`)
 - Módulos JS camelCase + Swiper CDN (`javascript-modules`, skill `create-slider-data`)
 - Formularios fake / datos fake estáticos (`static-json-data`, skill `create-static-json-module`)
+- Emulación BD (`emulated-db`, skill `emulated-db`) → seeds en `src/data/db/`, JS en `src/js/db/`
 
 El skill `review-rules-skills` detalla el mapa completo. Síguelo al inicio de cada tarea.

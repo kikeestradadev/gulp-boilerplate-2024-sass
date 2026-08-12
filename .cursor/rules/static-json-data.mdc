@@ -1,6 +1,6 @@
 ---
-description: Datos fake con fetch seed + form/localStorage para grillas que se actualizan en Pages
-globs: "{src/pug/style-guide/**/*.pug,src/js/modules/**/*.js,src/data/**/*.json}"
+description: Datos fake con fetch seed (src/data/db) + form/localStorage para grillas en Pages
+globs: "{src/pug/style-guide/**/*.pug,src/js/modules/**/*.js,src/js/db/**/*.js,src/data/**/*.json}"
 alwaysApply: false
 ---
 
@@ -13,18 +13,18 @@ Patrón del boilerplate para demos con **seed en JSON** y, si hay form, **mismo 
 ### A) Solo lectura (grilla)
 
 ```
-src/data/*.json → public/data/ → fetch → UI
+src/data/db/*.json → public/data/db/ → fetch → UI
 ```
 
 ### B) CRUD form + grilla (persona-grid)
 
 ```
-1. fetch seed → public/data/*.json (si no hay localStorage)
+1. fetch seed → public/data/db/*.json (si no hay localStorage)
 2. localStorage[storageKey] → lista con id por registro
 3. Crear / Actualizar / Eliminar → write localStorage + re-render
 ```
 
-- Cada persona tiene `id` (se genera al seed o al crear).
+- Cada registro tiene `id` (se genera al seed o al crear).
 - Create: Submit en modo crear.
 - Read: grilla de cards.
 - Update: Editar rellena el form; Submit guarda.
@@ -35,15 +35,16 @@ src/data/*.json → public/data/ → fetch → UI
 
 | Pieza | Ruta |
 |-------|------|
-| Seed | `src/data/persona.json` → `{ "personas": [ … ] }` |
+| Seed (tabla) | `src/data/db/persona.json` → `{ "personas": [ … ] }` |
 | Config UI | `src/data/persona-grid-data.json` |
-| Specimen | `src/pug/style-guide/persona-grid.pug` |
-| JS | `src/js/modules/personaGrid.js` |
+| Markup | `src/pug/style-guide/persona-grid.pug` |
+| JS UI | `src/js/modules/personaGrid.js` |
+| Store / “BD” | `src/js/db/crudDemoStore.js` |
 
 ## Comportamiento JS (modo B — CRUD)
 
 1. Si existe `localStorage[storageKey]` → usarlo (asignar `id` si falta).
-2. Si no → `fetch(dataUrl)`, normalizar con `id`, guardar storage, pintar grilla.
+2. Si no → `fetch(dataUrl)` desde `./data/db/…`, normalizar con `id`, guardar storage, pintar grilla.
 3. **Create** → append + `id` nuevo.
 4. **Update** → Editar carga form; Submit reemplaza por `id`.
 5. **Delete** → confirm + filtra por `id`.
@@ -56,11 +57,12 @@ src/data/*.json → public/data/ → fetch → UI
 | Ver seed + grilla | Sí |
 | Submit actualiza grilla | Sí (este browser) |
 | Otros visitantes ven lo que escribiste | No (cada browser tiene su localStorage) |
-| Escribe `src/data/persona.json` en el repo | No |
+| Escribe `src/data/db/persona.json` en el repo | No |
 
 ## Reglas
 
-1. Skill `create-static-json-module` para módulos nuevos de este patrón.
-2. `data-url` + `data-storage-key` en la raíz BEM del módulo.
-3. Markup: form arriba, grilla debajo (`aria-live` en la grilla).
-4. Sin Tailwind; hover con media query de pointer fino si aplica.
+1. Skill `create-static-json-module` para módulos UI nuevos de este patrón.
+2. Seeds de tablas → `src/data/db/`; lógica store/JOIN → `src/js/db/` (rule + skill `emulated-db`).
+3. `data-url` + `data-storage-key` en la raíz BEM del módulo.
+4. Markup: form arriba, grilla debajo (`aria-live` en la grilla).
+5. Sin Tailwind; hover con media query de pointer fino si aplica.
