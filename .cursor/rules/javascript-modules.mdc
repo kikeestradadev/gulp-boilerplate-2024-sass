@@ -8,8 +8,6 @@ alwaysApply: false
 
 Cada comportamiento de UI vive en `src/js/modules/`. esbuild agrupa desde `src/js/index.js` hacia `public/index.js`.
 
-Emulación de BD (store, seed, relaciones): `src/js/db/` — ver rule/skill `emulated-db`. No mezclar esa lógica en `modules/`.
-
 ## Naming
 
 | Capa | Convención | Ejemplo |
